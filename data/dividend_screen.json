@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-05-23T21:01:55.879550Z",
+    "generatedAt": "2026-05-25T02:56:01.848411Z",
     "universe": 419,
-    "buyCount": 13,
-    "watchCount": 34,
-    "avoidCount": 153,
+    "buyCount": 23,
+    "watchCount": 41,
+    "avoidCount": 127,
     "avgPercentile": 46.7,
     "lookbackYears": 10,
     "buyThreshold": 80,
@@ -117,7 +117,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AWK",
@@ -219,7 +219,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "DLB",
@@ -321,7 +321,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "GGG",
@@ -423,7 +423,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "INGR",
@@ -525,7 +525,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "INTU",
@@ -627,7 +627,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MAIN",
@@ -729,7 +729,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MKTX",
@@ -831,7 +831,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NXST",
@@ -933,7 +933,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "RMD",
@@ -1035,7 +1035,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ALG",
@@ -1137,7 +1137,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AOS",
@@ -1239,7 +1239,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ATR",
@@ -1341,7 +1341,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AVY",
@@ -1443,7 +1443,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BDX",
@@ -1545,7 +1545,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CMCSA",
@@ -1647,7 +1647,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "DPZ",
@@ -1749,7 +1749,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ECL",
@@ -1851,7 +1851,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "EXPO",
@@ -1953,7 +1953,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "FLO",
@@ -2055,7 +2055,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HD",
@@ -2157,7 +2157,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HNI",
@@ -2259,7 +2259,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "JJSF",
@@ -2361,7 +2361,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "JKHY",
@@ -2463,7 +2463,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MKC",
@@ -2565,7 +2565,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "POOL",
@@ -2667,7 +2667,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ROP",
@@ -2769,7 +2769,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SLGN",
@@ -2871,7 +2871,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TOWN",
@@ -2973,7 +2973,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "UFPI",
@@ -3075,7 +3075,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "XYL",
@@ -3177,7 +3177,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ZTS",
@@ -3279,7 +3279,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ABT",
@@ -3381,7 +3381,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ACN",
@@ -3483,7 +3483,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AJG",
@@ -3585,7 +3585,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BR",
@@ -3687,7 +3687,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BRO",
@@ -3789,7 +3789,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CDW",
@@ -3891,7 +3891,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CWT",
@@ -3993,7 +3993,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "DHR",
@@ -4095,7 +4095,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "GPC",
@@ -4197,7 +4197,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ICE",
@@ -4299,7 +4299,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MDT",
@@ -4401,7 +4401,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ALLE",
@@ -4503,7 +4503,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CHDN",
@@ -4605,7 +4605,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CLX",
@@ -4707,7 +4707,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ERIE",
@@ -4809,7 +4809,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ITW",
@@ -4820,12 +4820,12 @@
       "yieldLow": 1.63,
       "yieldMean": 2.3,
       "percentile": 96,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 4,
+      "stageLabel": "Stage 4 \u2014 Decline",
       "ma30": 261.61,
       "priceVsMa": -3.6,
       "maSlope": 0.13,
-      "signal": "BUY",
+      "signal": "AVOID",
       "streak": 0,
       "chartYields": [
         2.08,
@@ -4911,7 +4911,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LNN",
@@ -5013,7 +5013,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MA",
@@ -5115,7 +5115,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PG",
@@ -5217,7 +5217,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SCVL",
@@ -5319,7 +5319,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SYK",
@@ -5421,7 +5421,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WM",
@@ -5432,8 +5432,8 @@
       "yieldLow": 1.01,
       "yieldMean": 1.4,
       "percentile": 96,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 223.25,
       "priceVsMa": -2.4,
       "maSlope": 0.19,
@@ -5523,7 +5523,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AMP",
@@ -5625,7 +5625,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AMSF",
@@ -5727,7 +5727,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HOMB",
@@ -5829,7 +5829,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HRL",
@@ -5931,7 +5931,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MGEE",
@@ -6033,7 +6033,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PEG",
@@ -6135,7 +6135,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "RSG",
@@ -6237,7 +6237,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SPGI",
@@ -6339,7 +6339,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "STE",
@@ -6441,7 +6441,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BMI",
@@ -6543,7 +6543,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MCD",
@@ -6645,7 +6645,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MSEX",
@@ -6747,7 +6747,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NKE",
@@ -6849,7 +6849,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "RPM",
@@ -6951,7 +6951,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "YORW",
@@ -7053,7 +7053,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BBY",
@@ -7155,7 +7155,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "FNF",
@@ -7257,7 +7257,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MCO",
@@ -7359,7 +7359,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "THO",
@@ -7461,7 +7461,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ABM",
@@ -7563,7 +7563,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BAH",
@@ -7665,7 +7665,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BCPC",
@@ -7676,8 +7676,8 @@
       "yieldLow": 0.43,
       "yieldMean": 0.53,
       "percentile": 92,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 164.51,
       "priceVsMa": -1.68,
       "maSlope": 1.006,
@@ -7767,7 +7767,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LII",
@@ -7869,7 +7869,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PRGO",
@@ -7971,7 +7971,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "VMC",
@@ -8073,7 +8073,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "DHI",
@@ -8175,7 +8175,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "V",
@@ -8186,12 +8186,12 @@
       "yieldLow": 0.46,
       "yieldMean": 0.71,
       "percentile": 91,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 325.55,
       "priceVsMa": 1.02,
       "maSlope": -0.826,
-      "signal": "AVOID",
+      "signal": "BUY",
       "streak": 0,
       "chartYields": [
         0.69,
@@ -8277,7 +8277,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "APOG",
@@ -8379,7 +8379,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MLM",
@@ -8481,7 +8481,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MORN",
@@ -8583,7 +8583,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MSI",
@@ -8685,7 +8685,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "OC",
@@ -8696,12 +8696,12 @@
       "yieldLow": 0.95,
       "yieldMean": 1.8,
       "percentile": 89,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 116.8,
       "priceVsMa": 0.53,
       "maSlope": -1.238,
-      "signal": "AVOID",
+      "signal": "BUY",
       "streak": 0,
       "chartYields": [
         1.18,
@@ -8787,7 +8787,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WSO",
@@ -8798,8 +8798,8 @@
       "yieldLow": 1.54,
       "yieldMean": 2.54,
       "percentile": 89,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 381.46,
       "priceVsMa": -1.65,
       "maSlope": 0.993,
@@ -8889,7 +8889,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "FUL",
@@ -8900,12 +8900,12 @@
       "yieldLow": 0.74,
       "yieldMean": 1.4,
       "percentile": 88,
-      "stage": 1,
-      "stageLabel": "Stage 1 \u2014 Base",
+      "stage": 3,
+      "stageLabel": "Stage 3 \u2014 Top",
       "ma30": 60.31,
       "priceVsMa": -4.19,
       "maSlope": 0.02,
-      "signal": "BUY",
+      "signal": "AVOID",
       "streak": 0,
       "chartYields": [
         1.15,
@@ -8991,7 +8991,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "KMB",
@@ -9093,7 +9093,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LAD",
@@ -9195,7 +9195,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "A",
@@ -9297,7 +9297,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CHE",
@@ -9308,12 +9308,12 @@
       "yieldLow": 0.21,
       "yieldMean": 0.39,
       "percentile": 87,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 425.04,
       "priceVsMa": 3.37,
       "maSlope": -0.238,
-      "signal": "AVOID",
+      "signal": "BUY",
       "streak": 0,
       "chartYields": [
         0.23,
@@ -9399,7 +9399,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CPK",
@@ -9501,7 +9501,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HLI",
@@ -9603,7 +9603,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MAA",
@@ -9614,12 +9614,12 @@
       "yieldLow": 2.84,
       "yieldMean": 4.09,
       "percentile": 87,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 131.08,
       "priceVsMa": 0.05,
       "maSlope": -0.587,
-      "signal": "AVOID",
+      "signal": "BUY",
       "streak": 0,
       "chartYields": [
         3.65,
@@ -9705,7 +9705,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MSCI",
@@ -9807,7 +9807,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NSP",
@@ -9909,7 +9909,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NXRT",
@@ -9920,12 +9920,12 @@
       "yieldLow": 3.82,
       "yieldMean": 5.6,
       "percentile": 87,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 28.9,
       "priceVsMa": 2.89,
       "maSlope": -0.901,
-      "signal": "AVOID",
+      "signal": "BUY",
       "streak": 0,
       "chartYields": [
         3.98,
@@ -10011,7 +10011,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WDFC",
@@ -10022,8 +10022,8 @@
       "yieldLow": 1.03,
       "yieldMean": 1.59,
       "percentile": 87,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 211.6,
       "priceVsMa": -2.03,
       "maSlope": 0.705,
@@ -10113,7 +10113,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ADP",
@@ -10215,7 +10215,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CHCO",
@@ -10317,7 +10317,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "FDS",
@@ -10419,7 +10419,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PAYX",
@@ -10521,7 +10521,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HRB",
@@ -10532,12 +10532,12 @@
       "yieldLow": 1.99,
       "yieldMean": 3.05,
       "percentile": 84,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 37.71,
       "priceVsMa": 3.13,
       "maSlope": -5.277,
-      "signal": "AVOID",
+      "signal": "BUY",
       "streak": 0,
       "chartYields": [
         2.29,
@@ -10623,7 +10623,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HY",
@@ -10634,8 +10634,8 @@
       "yieldLow": 1.7,
       "yieldMean": 3.24,
       "percentile": 84,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 34.03,
       "priceVsMa": -0.43,
       "maSlope": 0.236,
@@ -10725,7 +10725,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "REXR",
@@ -10827,7 +10827,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "RHI",
@@ -10838,12 +10838,12 @@
       "yieldLow": 2.13,
       "yieldMean": 5.52,
       "percentile": 83,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 26.72,
       "priceVsMa": 2.21,
       "maSlope": -2.402,
-      "signal": "AVOID",
+      "signal": "BUY",
       "streak": 0,
       "chartYields": [
         2.77,
@@ -10929,7 +10929,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SSB",
@@ -10940,8 +10940,8 @@
       "yieldLow": 1.91,
       "yieldMean": 2.33,
       "percentile": 83,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 95.48,
       "priceVsMa": -0.92,
       "maSlope": 0.153,
@@ -11031,7 +11031,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BANF",
@@ -11042,12 +11042,12 @@
       "yieldLow": 1.05,
       "yieldMean": 1.6,
       "percentile": 82,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 111.06,
       "priceVsMa": 0.23,
       "maSlope": -0.853,
-      "signal": "AVOID",
+      "signal": "BUY",
       "streak": 0,
       "chartYields": [
         1.39,
@@ -11133,7 +11133,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AMT",
@@ -11144,12 +11144,12 @@
       "yieldLow": 2.75,
       "yieldMean": 3.34,
       "percentile": 81,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 179.42,
       "priceVsMa": 2.47,
       "maSlope": -0.867,
-      "signal": "AVOID",
+      "signal": "BUY",
       "streak": 0,
       "chartYields": [
         3.21,
@@ -11235,7 +11235,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LKFN",
@@ -11246,12 +11246,12 @@
       "yieldLow": 2.55,
       "yieldMean": 3.14,
       "percentile": 81,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 58.85,
       "priceVsMa": 1.79,
       "maSlope": -0.365,
-      "signal": "AVOID",
+      "signal": "BUY",
       "streak": 0,
       "chartYields": [
         2.55,
@@ -11337,7 +11337,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ORRF",
@@ -11439,7 +11439,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PRU",
@@ -11450,12 +11450,12 @@
       "yieldLow": 3.56,
       "yieldMean": 4.81,
       "percentile": 80,
-      "stage": 3,
-      "stageLabel": "Stage 3 \u2014 Top",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 104.43,
       "priceVsMa": -0.3,
       "maSlope": -0.017,
-      "signal": "AVOID",
+      "signal": "BUY",
       "streak": 0,
       "chartYields": [
         4.03,
@@ -11541,7 +11541,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SFBS",
@@ -11643,7 +11643,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SJM",
@@ -11654,12 +11654,12 @@
       "yieldLow": 3.46,
       "yieldMean": 3.98,
       "percentile": 80,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 102.42,
       "priceVsMa": 0.92,
       "maSlope": -0.659,
-      "signal": "AVOID",
+      "signal": "BUY",
       "streak": 0,
       "chartYields": [
         3.78,
@@ -11745,7 +11745,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SYY",
@@ -11847,7 +11847,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AFG",
@@ -11858,12 +11858,12 @@
       "yieldLow": 1.56,
       "yieldMean": 2.34,
       "percentile": 78,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 132.76,
       "priceVsMa": 2.96,
       "maSlope": -0.391,
-      "signal": "AVOID",
+      "signal": "WATCH",
       "streak": 0,
       "chartYields": [
         2.0,
@@ -11949,7 +11949,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "IOSP",
@@ -12051,7 +12051,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PPG",
@@ -12062,8 +12062,8 @@
       "yieldLow": 1.59,
       "yieldMean": 2.36,
       "percentile": 78,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 107.81,
       "priceVsMa": -0.03,
       "maSlope": 0.608,
@@ -12153,7 +12153,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AVNT",
@@ -12164,8 +12164,8 @@
       "yieldLow": 1.74,
       "yieldMean": 2.78,
       "percentile": 77,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 34.84,
       "priceVsMa": -1.53,
       "maSlope": 1.415,
@@ -12255,7 +12255,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ORI",
@@ -12357,7 +12357,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "OZK",
@@ -12368,12 +12368,12 @@
       "yieldLow": 2.41,
       "yieldMean": 3.58,
       "percentile": 77,
-      "stage": 3,
-      "stageLabel": "Stage 3 \u2014 Top",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 46.95,
       "priceVsMa": 2.54,
       "maSlope": 0.013,
-      "signal": "AVOID",
+      "signal": "WATCH",
       "streak": 0,
       "chartYields": [
         3.2,
@@ -12459,7 +12459,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "STZ",
@@ -12561,7 +12561,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AGM",
@@ -12663,7 +12663,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AWR",
@@ -12765,7 +12765,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "OTTR",
@@ -12867,7 +12867,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PRI",
@@ -12969,7 +12969,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "UTL",
@@ -13071,7 +13071,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CBSH",
@@ -13082,12 +13082,12 @@
       "yieldLow": 1.24,
       "yieldMean": 1.95,
       "percentile": 74,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 51.69,
       "priceVsMa": 1.32,
       "maSlope": -0.31,
-      "signal": "AVOID",
+      "signal": "WATCH",
       "streak": 0,
       "chartYields": [
         1.62,
@@ -13173,7 +13173,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CNS",
@@ -13275,7 +13275,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "FELE",
@@ -13377,7 +13377,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "FFIN",
@@ -13388,12 +13388,12 @@
       "yieldLow": 1.55,
       "yieldMean": 2.14,
       "percentile": 74,
-      "stage": 3,
-      "stageLabel": "Stage 3 \u2014 Top",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 31.44,
       "priceVsMa": 2.56,
       "maSlope": -0.011,
-      "signal": "AVOID",
+      "signal": "WATCH",
       "streak": 0,
       "chartYields": [
         1.68,
@@ -13479,7 +13479,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "KAI",
@@ -13581,7 +13581,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WMS",
@@ -13592,8 +13592,8 @@
       "yieldLow": 0.32,
       "yieldMean": 0.47,
       "percentile": 74,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 3,
+      "stageLabel": "Stage 3 \u2014 Top",
       "ma30": 149.56,
       "priceVsMa": -11.08,
       "maSlope": -0.027,
@@ -13683,7 +13683,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "COST",
@@ -13785,7 +13785,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CUBE",
@@ -13796,12 +13796,12 @@
       "yieldLow": 2.99,
       "yieldMean": 4.86,
       "percentile": 73,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 38.1,
       "priceVsMa": 5.16,
       "maSlope": -0.454,
-      "signal": "AVOID",
+      "signal": "WATCH",
       "streak": 0,
       "chartYields": [
         4.17,
@@ -13887,7 +13887,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MDLZ",
@@ -13898,12 +13898,12 @@
       "yieldLow": 1.78,
       "yieldMean": 2.88,
       "percentile": 73,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 57.81,
       "priceVsMa": 6.83,
       "maSlope": -0.128,
-      "signal": "AVOID",
+      "signal": "WATCH",
       "streak": 0,
       "chartYields": [
         2.71,
@@ -13989,7 +13989,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "RJF",
@@ -14091,7 +14091,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CHD",
@@ -14193,7 +14193,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "COR",
@@ -14295,7 +14295,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LAND",
@@ -14306,12 +14306,12 @@
       "yieldLow": 3.41,
       "yieldMean": 5.19,
       "percentile": 72,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 4,
+      "stageLabel": "Stage 4 \u2014 Decline",
       "ma30": 10.0,
       "priceVsMa": -3.69,
       "maSlope": 0.702,
-      "signal": "WATCH",
+      "signal": "AVOID",
       "streak": 0,
       "chartYields": [
         4.25,
@@ -14397,7 +14397,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MGRC",
@@ -14408,12 +14408,12 @@
       "yieldLow": 1.25,
       "yieldMean": 1.7,
       "percentile": 71,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 109.32,
       "priceVsMa": 0.7,
       "maSlope": -0.512,
-      "signal": "AVOID",
+      "signal": "WATCH",
       "streak": 0,
       "chartYields": [
         1.56,
@@ -14499,7 +14499,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PB",
@@ -14510,8 +14510,8 @@
       "yieldLow": 2.44,
       "yieldMean": 3.26,
       "percentile": 71,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 69.35,
       "priceVsMa": -0.37,
       "maSlope": 0.931,
@@ -14601,7 +14601,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NOC",
@@ -14703,7 +14703,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "DDS",
@@ -14805,7 +14805,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "IBCP",
@@ -14907,7 +14907,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HPQ",
@@ -14918,12 +14918,12 @@
       "yieldLow": 2.89,
       "yieldMean": 4.21,
       "percentile": 68,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 21.55,
       "priceVsMa": 17.13,
       "maSlope": -2.659,
-      "signal": "AVOID",
+      "signal": "WATCH",
       "streak": 0,
       "chartYields": [
         2.89,
@@ -15009,7 +15009,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "UDR",
@@ -15111,7 +15111,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HVT",
@@ -15122,12 +15122,12 @@
       "yieldLow": 3.36,
       "yieldMean": 5.52,
       "percentile": 67,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 4,
+      "stageLabel": "Stage 4 \u2014 Decline",
       "ma30": 23.45,
       "priceVsMa": -4.7,
       "maSlope": 0.73,
-      "signal": "WATCH",
+      "signal": "AVOID",
       "streak": 0,
       "chartYields": [
         5.27,
@@ -15213,7 +15213,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MAS",
@@ -15315,7 +15315,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TROW",
@@ -15326,12 +15326,12 @@
       "yieldLow": 3.57,
       "yieldMean": 4.8,
       "percentile": 67,
-      "stage": 3,
-      "stageLabel": "Stage 3 \u2014 Top",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 99.42,
       "priceVsMa": 3.99,
       "maSlope": 0.073,
-      "signal": "AVOID",
+      "signal": "WATCH",
       "streak": 0,
       "chartYields": [
         4.12,
@@ -15417,7 +15417,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "KR",
@@ -15428,12 +15428,12 @@
       "yieldLow": 1.72,
       "yieldMean": 2.0,
       "percentile": 66,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 66.83,
       "priceVsMa": 0.63,
       "maSlope": -0.174,
-      "signal": "AVOID",
+      "signal": "WATCH",
       "streak": 0,
       "chartYields": [
         2.06,
@@ -15519,7 +15519,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PEP",
@@ -15530,8 +15530,8 @@
       "yieldLow": 2.19,
       "yieldMean": 3.54,
       "percentile": 66,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 152.55,
       "priceVsMa": -1.3,
       "maSlope": 0.316,
@@ -15621,7 +15621,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "EMN",
@@ -15723,7 +15723,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ED",
@@ -15825,7 +15825,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MSA",
@@ -15927,7 +15927,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "GFF",
@@ -16029,7 +16029,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SCL",
@@ -16131,7 +16131,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CL",
@@ -16233,7 +16233,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "UPS",
@@ -16244,8 +16244,8 @@
       "yieldLow": 3.63,
       "yieldMean": 5.92,
       "percentile": 61,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 102.95,
       "priceVsMa": -1.87,
       "maSlope": 2.151,
@@ -16335,7 +16335,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WLK",
@@ -16346,8 +16346,8 @@
       "yieldLow": 1.17,
       "yieldMean": 2.1,
       "percentile": 61,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 89.94,
       "priceVsMa": -1.48,
       "maSlope": 2.805,
@@ -16437,7 +16437,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "FBIZ",
@@ -16539,7 +16539,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MWA",
@@ -16550,12 +16550,12 @@
       "yieldLow": 0.73,
       "yieldMean": 1.09,
       "percentile": 60,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 4,
+      "stageLabel": "Stage 4 \u2014 Decline",
       "ma30": 26.57,
       "priceVsMa": -4.73,
       "maSlope": 0.318,
-      "signal": "WATCH",
+      "signal": "AVOID",
       "streak": 0,
       "chartYields": [
         1.03,
@@ -16641,7 +16641,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SIGI",
@@ -16743,7 +16743,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SWK",
@@ -16845,7 +16845,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "UCB",
@@ -16947,7 +16947,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "DCI",
@@ -17049,7 +17049,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ESS",
@@ -17151,7 +17151,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MCK",
@@ -17162,8 +17162,8 @@
       "yieldLow": 0.31,
       "yieldMean": 0.41,
       "percentile": 59,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 3,
+      "stageLabel": "Stage 3 \u2014 Top",
       "ma30": 853.35,
       "priceVsMa": -10.23,
       "maSlope": -0.049,
@@ -17253,7 +17253,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ASH",
@@ -17355,7 +17355,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "DGICA",
@@ -17457,7 +17457,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "KWR",
@@ -17468,8 +17468,8 @@
       "yieldLow": 0.76,
       "yieldMean": 1.37,
       "percentile": 58,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 141.93,
       "priceVsMa": -0.06,
       "maSlope": 1.088,
@@ -17559,7 +17559,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ORCL",
@@ -17570,12 +17570,12 @@
       "yieldLow": 0.58,
       "yieldMean": 1.0,
       "percentile": 58,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 180.98,
       "priceVsMa": 6.13,
       "maSlope": -6.877,
-      "signal": "AVOID",
+      "signal": "HOLD",
       "streak": 0,
       "chartYields": [
         0.83,
@@ -17661,7 +17661,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PFE",
@@ -17672,8 +17672,8 @@
       "yieldLow": 5.39,
       "yieldMean": 6.51,
       "percentile": 58,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 26.18,
       "priceVsMa": -1.05,
       "maSlope": 0.232,
@@ -17763,7 +17763,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MPLX",
@@ -17865,7 +17865,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ADC",
@@ -17967,7 +17967,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HIG",
@@ -18069,7 +18069,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "JPM",
@@ -18080,8 +18080,8 @@
       "yieldLow": 1.35,
       "yieldMean": 1.91,
       "percentile": 55,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 306.99,
       "priceVsMa": -0.2,
       "maSlope": 0.107,
@@ -18171,7 +18171,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NFG",
@@ -18273,7 +18273,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TNC",
@@ -18375,7 +18375,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "DKS",
@@ -18386,12 +18386,12 @@
       "yieldLow": 0.99,
       "yieldMean": 1.94,
       "percentile": 51,
-      "stage": 3,
-      "stageLabel": "Stage 3 \u2014 Top",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 210.7,
       "priceVsMa": 9.75,
       "maSlope": 0.015,
-      "signal": "AVOID",
+      "signal": "HOLD",
       "streak": 0,
       "chartYields": [
         1.52,
@@ -18477,7 +18477,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "EFSC",
@@ -18579,7 +18579,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CHCT",
@@ -18681,7 +18681,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CMS",
@@ -18692,12 +18692,12 @@
       "yieldLow": 2.15,
       "yieldMean": 2.97,
       "percentile": 50,
-      "stage": 3,
-      "stageLabel": "Stage 3 \u2014 Top",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 74.02,
       "priceVsMa": 0.7,
       "maSlope": -0.052,
-      "signal": "AVOID",
+      "signal": "HOLD",
       "streak": 0,
       "chartYields": [
         2.96,
@@ -18783,7 +18783,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ELV",
@@ -18885,7 +18885,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NBTB",
@@ -18987,7 +18987,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NDAQ",
@@ -19089,7 +19089,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "UNH",
@@ -19191,7 +19191,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NBHC",
@@ -19293,7 +19293,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WRB",
@@ -19395,7 +19395,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "APD",
@@ -19497,7 +19497,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AFL",
@@ -19599,7 +19599,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HEI",
@@ -19701,7 +19701,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NNI",
@@ -19803,7 +19803,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TRN",
@@ -19905,7 +19905,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "UVV",
@@ -19916,12 +19916,12 @@
       "yieldLow": 4.46,
       "yieldMean": 5.94,
       "percentile": 46,
-      "stage": 3,
-      "stageLabel": "Stage 3 \u2014 Top",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 53.5,
       "priceVsMa": 1.9,
       "maSlope": 0.044,
-      "signal": "AVOID",
+      "signal": "HOLD",
       "streak": 0,
       "chartYields": [
         5.64,
@@ -20007,7 +20007,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AUB",
@@ -20109,7 +20109,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CBT",
@@ -20211,7 +20211,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "FR",
@@ -20313,7 +20313,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SNA",
@@ -20415,7 +20415,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WEC",
@@ -20426,12 +20426,12 @@
       "yieldLow": 2.74,
       "yieldMean": 3.34,
       "percentile": 45,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 111.76,
       "priceVsMa": 1.48,
       "maSlope": -0.28,
-      "signal": "AVOID",
+      "signal": "HOLD",
       "streak": 0,
       "chartYields": [
         3.32,
@@ -20517,7 +20517,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AMGN",
@@ -20528,8 +20528,8 @@
       "yieldLow": 2.29,
       "yieldMean": 2.96,
       "percentile": 44,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 343.06,
       "priceVsMa": -1.1,
       "maSlope": 1.464,
@@ -20619,7 +20619,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "GABC",
@@ -20721,7 +20721,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SON",
@@ -20823,7 +20823,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SYBT",
@@ -20925,7 +20925,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BLK",
@@ -20936,12 +20936,12 @@
       "yieldLow": 1.72,
       "yieldMean": 2.08,
       "percentile": 43,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 1053.24,
       "priceVsMa": 1.88,
       "maSlope": -0.908,
-      "signal": "AVOID",
+      "signal": "HOLD",
       "streak": 0,
       "chartYields": [
         1.96,
@@ -21027,7 +21027,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TRNO",
@@ -21129,7 +21129,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LYB",
@@ -21231,7 +21231,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TT",
@@ -21333,7 +21333,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ABBV",
@@ -21435,7 +21435,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "EIX",
@@ -21537,7 +21537,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "FRME",
@@ -21639,7 +21639,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "IBM",
@@ -21741,7 +21741,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TGT",
@@ -21843,7 +21843,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WLY",
@@ -21945,7 +21945,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WSM",
@@ -21956,12 +21956,12 @@
       "yieldLow": 1.2,
       "yieldMean": 1.71,
       "percentile": 40,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 191.44,
       "priceVsMa": 0.55,
       "maSlope": -0.556,
-      "signal": "AVOID",
+      "signal": "HOLD",
       "streak": 0,
       "chartYields": [
         1.84,
@@ -22047,7 +22047,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ENSG",
@@ -22149,7 +22149,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LLY",
@@ -22251,7 +22251,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SWKS",
@@ -22262,12 +22262,12 @@
       "yieldLow": 2.34,
       "yieldMean": 3.72,
       "percentile": 39,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 62.92,
       "priceVsMa": 31.0,
       "maSlope": -0.448,
-      "signal": "AVOID",
+      "signal": "HOLD",
       "streak": 0,
       "chartYields": [
         3.21,
@@ -22353,7 +22353,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "GATX",
@@ -22364,12 +22364,12 @@
       "yieldLow": 1.02,
       "yieldMean": 1.49,
       "percentile": 38,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 4,
+      "stageLabel": "Stage 4 \u2014 Decline",
       "ma30": 176.39,
       "priceVsMa": -3.81,
       "maSlope": 0.894,
-      "signal": "HOLD",
+      "signal": "AVOID",
       "streak": 0,
       "chartYields": [
         1.42,
@@ -22455,7 +22455,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "POR",
@@ -22466,8 +22466,8 @@
       "yieldLow": 3.02,
       "yieldMean": 4.36,
       "percentile": 38,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 50.29,
       "priceVsMa": -0.94,
       "maSlope": 1.196,
@@ -22557,7 +22557,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TTEK",
@@ -22659,7 +22659,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "APH",
@@ -22670,12 +22670,12 @@
       "yieldLow": 0.47,
       "yieldMean": 0.8,
       "percentile": 37,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 4,
+      "stageLabel": "Stage 4 \u2014 Decline",
       "ma30": 138.28,
       "priceVsMa": -4.5,
       "maSlope": 0.582,
-      "signal": "HOLD",
+      "signal": "AVOID",
       "streak": 0,
       "chartYields": [
         0.96,
@@ -22761,7 +22761,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MATW",
@@ -22863,7 +22863,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BAC",
@@ -22874,8 +22874,8 @@
       "yieldLow": 1.58,
       "yieldMean": 2.21,
       "percentile": 36,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 52.34,
       "priceVsMa": -1.03,
       "maSlope": 0.19,
@@ -22965,7 +22965,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "EMR",
@@ -22976,8 +22976,8 @@
       "yieldLow": 1.36,
       "yieldMean": 1.71,
       "percentile": 36,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 138.85,
       "priceVsMa": -1.75,
       "maSlope": 0.616,
@@ -23067,7 +23067,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "FCBC",
@@ -23169,7 +23169,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PII",
@@ -23271,7 +23271,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SSD",
@@ -23373,7 +23373,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TTC",
@@ -23475,7 +23475,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ATO",
@@ -23577,7 +23577,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CTAS",
@@ -23679,7 +23679,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LMT",
@@ -23690,12 +23690,12 @@
       "yieldLow": 1.67,
       "yieldMean": 2.55,
       "percentile": 35,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 4,
+      "stageLabel": "Stage 4 \u2014 Decline",
       "ma30": 554.53,
       "priceVsMa": -3.84,
       "maSlope": 0.474,
-      "signal": "HOLD",
+      "signal": "AVOID",
       "streak": 0,
       "chartYields": [
         2.32,
@@ -23781,7 +23781,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NEE",
@@ -23883,7 +23883,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WST",
@@ -23985,7 +23985,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ETN",
@@ -24087,7 +24087,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HUBB",
@@ -24098,8 +24098,8 @@
       "yieldLow": 0.99,
       "yieldMean": 1.21,
       "percentile": 33,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 481.25,
       "priceVsMa": -1.3,
       "maSlope": 1.938,
@@ -24189,7 +24189,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SFNC",
@@ -24291,7 +24291,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "UNM",
@@ -24393,7 +24393,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BC",
@@ -24495,7 +24495,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CFR",
@@ -24597,7 +24597,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MET",
@@ -24699,7 +24699,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "GD",
@@ -24710,8 +24710,8 @@
       "yieldLow": 1.39,
       "yieldMean": 1.89,
       "percentile": 28,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 346.0,
       "priceVsMa": -0.9,
       "maSlope": 0.109,
@@ -24801,7 +24801,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "RLI",
@@ -24903,7 +24903,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "UHT",
@@ -25005,7 +25005,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AES",
@@ -25016,12 +25016,12 @@
       "yieldLow": 3.13,
       "yieldMean": 5.05,
       "percentile": 27,
-      "stage": 3,
-      "stageLabel": "Stage 3 \u2014 Top",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 14.51,
       "priceVsMa": 1.2,
       "maSlope": -0.005,
-      "signal": "AVOID",
+      "signal": "HOLD",
       "streak": 0,
       "chartYields": [
         5.29,
@@ -25107,7 +25107,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ALL",
@@ -25209,7 +25209,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NDSN",
@@ -25311,7 +25311,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SO",
@@ -25322,12 +25322,12 @@
       "yieldLow": 2.41,
       "yieldMean": 3.21,
       "percentile": 26,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 91.97,
       "priceVsMa": 2.81,
       "maSlope": -0.394,
-      "signal": "AVOID",
+      "signal": "HOLD",
       "streak": 0,
       "chartYields": [
         2.44,
@@ -25413,7 +25413,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TEL",
@@ -25515,7 +25515,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "UNTY",
@@ -25617,7 +25617,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AIT",
@@ -25719,7 +25719,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "RTX",
@@ -25730,12 +25730,12 @@
       "yieldLow": 1.17,
       "yieldMean": 1.8,
       "percentile": 24,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 4,
+      "stageLabel": "Stage 4 \u2014 Decline",
       "ma30": 188.07,
       "priceVsMa": -5.88,
       "maSlope": 0.667,
-      "signal": "HOLD",
+      "signal": "AVOID",
       "streak": 0,
       "chartYields": [
         2.05,
@@ -25821,7 +25821,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SRE",
@@ -25923,7 +25923,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WSBC",
@@ -26025,7 +26025,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CBU",
@@ -26127,7 +26127,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CME",
@@ -26229,7 +26229,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HII",
@@ -26331,7 +26331,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MRK",
@@ -26433,7 +26433,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NNN",
@@ -26535,7 +26535,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NSA",
@@ -26637,7 +26637,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "RF",
@@ -26739,7 +26739,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SBUX",
@@ -26841,7 +26841,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "FITB",
@@ -26943,7 +26943,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HWKN",
@@ -26954,12 +26954,12 @@
       "yieldLow": 0.4,
       "yieldMean": 0.54,
       "percentile": 22,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 146.06,
       "priceVsMa": 4.85,
       "maSlope": -0.707,
-      "signal": "AVOID",
+      "signal": "HOLD",
       "streak": 0,
       "chartYields": [
         0.52,
@@ -27045,7 +27045,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LSTR",
@@ -27147,7 +27147,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "O",
@@ -27249,7 +27249,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WTFC",
@@ -27351,7 +27351,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "GTY",
@@ -27453,7 +27453,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SR",
@@ -27464,8 +27464,8 @@
       "yieldLow": 3.02,
       "yieldMean": 4.09,
       "percentile": 21,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 87.59,
       "priceVsMa": -0.69,
       "maSlope": 0.37,
@@ -27555,7 +27555,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "STBA",
@@ -27657,7 +27657,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WAFD",
@@ -27759,7 +27759,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WMT",
@@ -27861,7 +27861,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CAH",
@@ -27872,12 +27872,12 @@
       "yieldLow": 0.89,
       "yieldMean": 1.41,
       "percentile": 20,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 4,
+      "stageLabel": "Stage 4 \u2014 Decline",
       "ma30": 208.02,
       "priceVsMa": -3.53,
       "maSlope": 2.381,
-      "signal": "HOLD",
+      "signal": "AVOID",
       "streak": 0,
       "chartYields": [
         1.65,
@@ -27963,7 +27963,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CINF",
@@ -28065,7 +28065,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "EGP",
@@ -28167,7 +28167,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HON",
@@ -28269,7 +28269,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MBWM",
@@ -28371,7 +28371,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "OGS",
@@ -28382,8 +28382,8 @@
       "yieldLow": 2.54,
       "yieldMean": 3.53,
       "percentile": 20,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 83.01,
       "priceVsMa": -0.62,
       "maSlope": 0.547,
@@ -28473,7 +28473,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "RBCAA",
@@ -28575,7 +28575,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "RGLD",
@@ -28677,7 +28677,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SEIC",
@@ -28779,7 +28779,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SHW",
@@ -28881,7 +28881,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TPL",
@@ -28983,7 +28983,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TSCO",
@@ -29085,7 +29085,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "USB",
@@ -29187,7 +29187,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CASS",
@@ -29289,7 +29289,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "GWW",
@@ -29391,7 +29391,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "IBOC",
@@ -29493,7 +29493,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "REG",
@@ -29595,7 +29595,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WTS",
@@ -29697,7 +29697,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BMY",
@@ -29799,7 +29799,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LHX",
@@ -29810,12 +29810,12 @@
       "yieldLow": 1.31,
       "yieldMean": 1.82,
       "percentile": 18,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 4,
+      "stageLabel": "Stage 4 \u2014 Decline",
       "ma30": 323.42,
       "priceVsMa": -3.54,
       "maSlope": 0.639,
-      "signal": "HOLD",
+      "signal": "AVOID",
       "streak": 0,
       "chartYields": [
         1.4,
@@ -29901,7 +29901,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PNC",
@@ -30003,7 +30003,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "XEL",
@@ -30014,12 +30014,12 @@
       "yieldLow": 2.34,
       "yieldMean": 3.16,
       "percentile": 18,
-      "stage": 3,
-      "stageLabel": "Stage 3 \u2014 Top",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 78.85,
       "priceVsMa": 2.83,
       "maSlope": -0.075,
-      "signal": "AVOID",
+      "signal": "HOLD",
       "streak": 0,
       "chartYields": [
         3.03,
@@ -30105,7 +30105,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BWXT",
@@ -30207,7 +30207,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "DUK",
@@ -30218,12 +30218,12 @@
       "yieldLow": 3.18,
       "yieldMean": 3.56,
       "percentile": 17,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 124.1,
       "priceVsMa": 1.26,
       "maSlope": -0.19,
-      "signal": "AVOID",
+      "signal": "HOLD",
       "streak": 0,
       "chartYields": [
         3.61,
@@ -30309,7 +30309,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HBCP",
@@ -30411,7 +30411,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TR",
@@ -30513,7 +30513,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "POWI",
@@ -30615,7 +30615,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "WABC",
@@ -30717,7 +30717,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CCBG",
@@ -30819,7 +30819,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "DGX",
@@ -30921,7 +30921,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "FAF",
@@ -31023,7 +31023,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "RNR",
@@ -31125,7 +31125,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SRCE",
@@ -31227,7 +31227,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TCBK",
@@ -31329,7 +31329,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ZION",
@@ -31431,7 +31431,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ASB",
@@ -31533,7 +31533,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BKH",
@@ -31635,7 +31635,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BOKF",
@@ -31737,7 +31737,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "EVR",
@@ -31839,7 +31839,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "GILD",
@@ -31941,7 +31941,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "IDA",
@@ -32043,7 +32043,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "INDB",
@@ -32145,7 +32145,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LIN",
@@ -32247,7 +32247,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LMAT",
@@ -32349,7 +32349,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NWN",
@@ -32451,7 +32451,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PEBO",
@@ -32553,7 +32553,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AIZ",
@@ -32655,7 +32655,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "DKL",
@@ -32757,7 +32757,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HFWA",
@@ -32859,7 +32859,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PM",
@@ -32961,7 +32961,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SXI",
@@ -33063,7 +33063,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TSN",
@@ -33165,7 +33165,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "GS",
@@ -33267,7 +33267,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ITT",
@@ -33369,7 +33369,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LECO",
@@ -33471,7 +33471,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "STAG",
@@ -33573,7 +33573,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "THFF",
@@ -33675,7 +33675,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "UBSI",
@@ -33777,7 +33777,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AROW",
@@ -33879,7 +33879,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CHRW",
@@ -33981,7 +33981,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "HMN",
@@ -34083,7 +34083,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "JNJ",
@@ -34185,7 +34185,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MCHP",
@@ -34287,7 +34287,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "VZ",
@@ -34389,7 +34389,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AEP",
@@ -34491,7 +34491,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ALB",
@@ -34593,7 +34593,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BFC",
@@ -34695,7 +34695,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CB",
@@ -34797,7 +34797,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CTRE",
@@ -34899,7 +34899,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "DOV",
@@ -35001,7 +35001,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "FRT",
@@ -35103,7 +35103,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AEE",
@@ -35205,7 +35205,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ANDE",
@@ -35307,7 +35307,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "SMBC",
@@ -35409,7 +35409,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "FIX",
@@ -35511,7 +35511,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MSFT",
@@ -35613,7 +35613,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NI",
@@ -35715,7 +35715,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PNW",
@@ -35817,7 +35817,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "UMBF",
@@ -35919,7 +35919,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BRC",
@@ -36021,7 +36021,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CVX",
@@ -36123,7 +36123,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "EQIX",
@@ -36225,7 +36225,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "EXPD",
@@ -36327,7 +36327,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "GL",
@@ -36429,7 +36429,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "OGE",
@@ -36531,7 +36531,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TMP",
@@ -36633,7 +36633,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "UNP",
@@ -36735,7 +36735,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ALRS",
@@ -36837,7 +36837,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AVGO",
@@ -36939,7 +36939,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ODC",
@@ -37041,7 +37041,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TRV",
@@ -37143,7 +37143,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ETR",
@@ -37245,7 +37245,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "OSK",
@@ -37347,7 +37347,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PSX",
@@ -37449,7 +37449,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "XOM",
@@ -37551,7 +37551,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ADI",
@@ -37653,7 +37653,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CIVB",
@@ -37755,7 +37755,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CMI",
@@ -37857,7 +37857,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CTBI",
@@ -37959,7 +37959,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "EVRG",
@@ -38061,7 +38061,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "GRC",
@@ -38163,7 +38163,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PLD",
@@ -38265,7 +38265,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "R",
@@ -38367,7 +38367,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AAPL",
@@ -38469,7 +38469,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ADM",
@@ -38571,7 +38571,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CASY",
@@ -38673,7 +38673,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CAT",
@@ -38775,7 +38775,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CNO",
@@ -38877,7 +38877,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "KO",
@@ -38979,7 +38979,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LNT",
@@ -39081,7 +39081,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MO",
@@ -39183,7 +39183,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NRIM",
@@ -39194,8 +39194,8 @@
       "yieldLow": 6.39,
       "yieldMean": 11.65,
       "percentile": 2,
-      "stage": 2,
-      "stageLabel": "Stage 2 \u2014 Advance",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 24.72,
       "priceVsMa": -0.32,
       "maSlope": 1.781,
@@ -39285,7 +39285,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ROK",
@@ -39387,7 +39387,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BEN",
@@ -39489,7 +39489,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "FAST",
@@ -39500,12 +39500,12 @@
       "yieldLow": 1.51,
       "yieldMean": 3.62,
       "percentile": 1,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 43.76,
       "priceVsMa": 0.41,
       "maSlope": -0.206,
-      "signal": "AVOID",
+      "signal": "HOLD",
       "streak": 0,
       "chartYields": [
         3.76,
@@ -39591,7 +39591,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MATX",
@@ -39693,7 +39693,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NJR",
@@ -39795,7 +39795,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NPO",
@@ -39897,7 +39897,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "PFG",
@@ -39999,7 +39999,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "RS",
@@ -40101,7 +40101,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AVA",
@@ -40203,7 +40203,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "AVT",
@@ -40305,7 +40305,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BEP",
@@ -40407,7 +40407,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BHB",
@@ -40509,7 +40509,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BIP",
@@ -40611,7 +40611,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "BNY",
@@ -40713,7 +40713,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CBOE",
@@ -40815,7 +40815,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CGNX",
@@ -40917,7 +40917,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CSCO",
@@ -41019,7 +41019,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "CSX",
@@ -41121,7 +41121,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "EPD",
@@ -41223,7 +41223,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "ES",
@@ -41234,12 +41234,12 @@
       "yieldLow": 3.12,
       "yieldMean": 4.47,
       "percentile": 0,
-      "stage": 4,
-      "stageLabel": "Stage 4 \u2014 Decline",
+      "stage": 1,
+      "stageLabel": "Stage 1 \u2014 Base",
       "ma30": 69.67,
       "priceVsMa": 0.47,
       "maSlope": -0.824,
-      "signal": "AVOID",
+      "signal": "HOLD",
       "streak": 0,
       "chartYields": [
         4.45,
@@ -41325,7 +41325,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "JBHT",
@@ -41427,7 +41427,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "KLAC",
@@ -41529,7 +41529,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LFUS",
@@ -41631,7 +41631,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "LRCX",
@@ -41733,7 +41733,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MS",
@@ -41835,7 +41835,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "MTRN",
@@ -41937,7 +41937,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "NUE",
@@ -42039,7 +42039,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "QCOM",
@@ -42141,7 +42141,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "RGA",
@@ -42243,7 +42243,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "STLD",
@@ -42345,7 +42345,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "STT",
@@ -42447,7 +42447,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "THG",
@@ -42549,7 +42549,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TKR",
@@ -42651,7 +42651,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     },
     {
       "ticker": "TXN",
@@ -42753,7 +42753,7 @@
         "2025",
         "2025"
       ],
-      "lastUpdated": "2026-05-23"
+      "lastUpdated": "2026-05-25"
     }
   ]
 }
