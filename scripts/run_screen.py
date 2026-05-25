@@ -204,26 +204,31 @@ def classify_stage(closes: list[dict]) -> dict:
     prior_vol = np.mean(volumes[-16:-8]) if len(volumes) >= 16 else recent_vol
     vol_expanding = recent_vol > prior_vol
 
-    # Stage classification
-    if price_vs_ma > -5 and ma_slope > 0.1:
+    # Stage classification - strict Weinstein rules
+    # Stage 2: price ABOVE rising 30w MA. Non-negotiable.
+    if price_vs_ma > 0 and ma_slope > 0.1:
         stage = 2
         stage_label = "Stage 2 — Advance"
-    elif price_vs_ma > -8 and -0.1 <= ma_slope <= 0.1:
-        if vol_expanding:
-            stage = 1
-            stage_label = "Stage 1 — Base"
-        else:
-            stage = 3
-            stage_label = "Stage 3 — Top"
-    elif price_vs_ma <= -8 or ma_slope < -0.1:
+    # Stage 4: price BELOW declining 30w MA. Non-negotiable.
+    elif price_vs_ma < 0 and ma_slope < -0.1:
         stage = 4
         stage_label = "Stage 4 — Decline"
-    elif ma_slope > 0:
-        stage = 2
-        stage_label = "Stage 2 — Advance"
-    else:
+    # Stage 1: price near or above MA, MA flattening after decline (basing)
+    elif price_vs_ma > -3 and ma_slope >= -0.1:
         stage = 1
         stage_label = "Stage 1 — Base"
+    # Stage 3: price near or below MA, MA flattening or rolling over after advance (topping)
+    elif price_vs_ma <= 0 and ma_slope <= 0.1:
+        stage = 3
+        stage_label = "Stage 3 — Top"
+    # Edge case: price above MA but slope not yet rising - late Stage 1
+    elif price_vs_ma > 0 and ma_slope <= 0.1:
+        stage = 1
+        stage_label = "Stage 1 — Base"
+    # Fallback
+    else:
+        stage = 4
+        stage_label = "Stage 4 — Decline"
 
     return {
         "stage": stage,
@@ -421,4 +426,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
