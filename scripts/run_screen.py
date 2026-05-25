@@ -73,26 +73,36 @@ DIVIDEND_ACHIEVERS = [
 # Deduplicate
 TICKERS = sorted(set(DIVIDEND_ACHIEVERS))
 
-STAGE_WINDOW = 30       # weeks for Weinstein MA
-YIELD_LOOKBACK = 520    # weeks (~10 years)
-RATE_LIMIT_DELAY = 0.25 # seconds between Polygon calls (stay within free tier limits)
+STAGE_WINDOW = 30        # weeks for Weinstein MA
+YIELD_LOOKBACK = 520     # weeks (~10 years)
+RATE_LIMIT_DELAY = 0.12  # seconds between calls (free tier: 5 calls/min)
+MAX_RATE_LIMIT_RETRIES = 3  # max 429 retries before skipping ticker
 
 
 def polygon_get(path: str, params: dict) -> Optional[dict]:
-    """Single Polygon API call with basic retry."""
+    """Single Polygon API call with retry and rate limit cap."""
     params["apiKey"] = POLYGON_API_KEY
     url = f"{BASE_URL}{path}"
-    for attempt in range(3):
+    rate_limit_hits = 0
+    for attempt in range(4):
         try:
-            r = requests.get(url, params=params, timeout=30)
+            r = requests.get(url, params=params, timeout=20)
             if r.status_code == 429:
-                log.warning("Rate limited, sleeping 60s")
-                time.sleep(60)
+                rate_limit_hits += 1
+                if rate_limit_hits >= MAX_RATE_LIMIT_RETRIES:
+                    log.warning(f"Rate limit max retries hit for {path}, skipping")
+                    return None
+                wait = 15 * rate_limit_hits
+                log.warning(f"Rate limited, sleeping {wait}s (hit {rate_limit_hits})")
+                time.sleep(wait)
                 continue
             if r.status_code == 200:
                 return r.json()
             log.warning(f"HTTP {r.status_code} for {path}")
             return None
+        except requests.exceptions.Timeout:
+            log.error(f"Timeout on attempt {attempt+1} for {path}")
+            time.sleep(2)
         except Exception as e:
             log.error(f"Request error (attempt {attempt+1}): {e}")
             time.sleep(2)
@@ -103,12 +113,10 @@ def get_weekly_closes(ticker: str, years: int = 11) -> list[dict]:
     """Pull weekly OHLCV bars from Polygon for the last N years."""
     end = date.today()
     start = end - timedelta(weeks=years * 52)
-    results = []
     url = f"/v2/aggs/ticker/{ticker}/range/1/week/{start}/{end}"
     params = {"adjusted": "true", "sort": "asc", "limit": 50000}
     data = polygon_get(url, params)
-    if data and data.get("results"):
-        results = data["results"]
+    results = data.get("results", []) if data else []
     time.sleep(RATE_LIMIT_DELAY)
     return results
 
@@ -179,10 +187,13 @@ def calc_yield_series(closes: list[dict], dividends: list[dict]) -> list[float]:
 def classify_stage(closes: list[dict]) -> dict:
     """
     Weinstein Stage Analysis using 30-week SMA.
-    Returns stage (1-4), 30w MA value, slope direction, and price vs MA.
+    Strict rules:
+    - Stage 2 requires price above MA AND MA rising consistently for 4+ weeks
+    - Stage 4 requires price below MA AND MA declining
+    - Ambiguous cases default toward caution (Stage 3/4 over Stage 1/2)
     """
-    if len(closes) < STAGE_WINDOW + 4:
-        return {"stage": 0, "stage_label": "Insufficient data", "ma30": None, "price_vs_ma": None}
+    if len(closes) < STAGE_WINDOW + 8:
+        return {"stage": 0, "stage_label": "Insufficient data", "ma30": None, "price_vs_ma": None, "ma_slope": None, "vol_expanding": False}
 
     prices = [bar["c"] for bar in closes]
     volumes = [bar.get("v", 0) for bar in closes]
@@ -194,41 +205,60 @@ def classify_stage(closes: list[dict]) -> dict:
 
     current_price = prices[-1]
     current_ma = ma30_series[-1]
-    prev_ma = ma30_series[-5] if len(ma30_series) >= 5 else ma30_series[0]
 
-    ma_slope = (current_ma - prev_ma) / prev_ma * 100 if prev_ma else 0
+    # Primary slope: 5-week comparison
+    prev_ma_5 = ma30_series[-5] if len(ma30_series) >= 5 else ma30_series[0]
+    ma_slope = (current_ma - prev_ma_5) / prev_ma_5 * 100 if prev_ma_5 else 0
+
     price_vs_ma = (current_price - current_ma) / current_ma * 100 if current_ma else 0
 
-    # Volume trend: compare recent 8w avg vs prior 8w avg
+    # Slope consistency: count how many of last 4 weeks the MA was rising
+    # MA is "consistently rising" if it rose in 3 of last 4 weekly steps
+    rising_weeks = 0
+    for i in range(-4, 0):
+        if len(ma30_series) >= abs(i) + 1:
+            if ma30_series[i] > ma30_series[i - 1]:
+                rising_weeks += 1
+
+    declining_weeks = 0
+    for i in range(-4, 0):
+        if len(ma30_series) >= abs(i) + 1:
+            if ma30_series[i] < ma30_series[i - 1]:
+                declining_weeks += 1
+
+    ma_consistently_rising = rising_weeks >= 3 and ma_slope > 0.3
+    ma_consistently_declining = declining_weeks >= 3 and ma_slope < -0.3
+
+    # Volume trend
     recent_vol = np.mean(volumes[-8:]) if len(volumes) >= 8 else 0
     prior_vol = np.mean(volumes[-16:-8]) if len(volumes) >= 16 else recent_vol
     vol_expanding = recent_vol > prior_vol
 
-    # Stage classification - strict Weinstein rules
-    # Stage 2: price ABOVE rising 30w MA. Non-negotiable.
-    if price_vs_ma > 0 and ma_slope > 0.1:
+    # Stage classification - strict Weinstein
+    # Stage 2: price ABOVE MA AND MA consistently rising for 3+ of last 4 weeks
+    if price_vs_ma > 0 and ma_consistently_rising:
         stage = 2
-        stage_label = "Stage 2 — Advance"
-    # Stage 4: price BELOW declining 30w MA. Non-negotiable.
-    elif price_vs_ma < 0 and ma_slope < -0.1:
+        stage_label = "Stage 2 - Advance"
+    # Stage 4: price BELOW MA AND MA consistently declining
+    elif price_vs_ma < 0 and ma_consistently_declining:
         stage = 4
-        stage_label = "Stage 4 — Decline"
-    # Stage 1: price near or above MA, MA flattening after decline (basing)
-    elif price_vs_ma > -3 and ma_slope >= -0.1:
+        stage_label = "Stage 4 - Decline"
+    # Stage 4: price well below MA regardless of slope (deep in decline)
+    elif price_vs_ma < -5:
+        stage = 4
+        stage_label = "Stage 4 - Decline"
+    # Stage 1: price near/above MA, MA flattening or just beginning to turn up
+    elif price_vs_ma > -3 and not ma_consistently_declining:
         stage = 1
-        stage_label = "Stage 1 — Base"
-    # Stage 3: price near or below MA, MA flattening or rolling over after advance (topping)
-    elif price_vs_ma <= 0 and ma_slope <= 0.1:
+        stage_label = "Stage 1 - Base"
+    # Stage 3: price below MA, MA still elevated but rolling over
+    elif price_vs_ma <= 0 and not ma_consistently_declining:
         stage = 3
-        stage_label = "Stage 3 — Top"
-    # Edge case: price above MA but slope not yet rising - late Stage 1
-    elif price_vs_ma > 0 and ma_slope <= 0.1:
-        stage = 1
-        stage_label = "Stage 1 — Base"
-    # Fallback
+        stage_label = "Stage 3 - Top"
+    # Fallback: anything else is Stage 4
     else:
         stage = 4
-        stage_label = "Stage 4 — Decline"
+        stage_label = "Stage 4 - Decline"
 
     return {
         "stage": stage,
@@ -283,12 +313,8 @@ def process_ticker(ticker: str) -> Optional[dict]:
         yield_high = max(yield_window)
         yield_low = min(yield_window)
         yield_mean = np.mean(yield_window)
-        yield_percentile = int(np.percentile(
-            sorted(yield_window),
-            [100 * (current_yield - yield_low) / (yield_high - yield_low)]
-        )[0]) if yield_high > yield_low else 50
 
-        # Simpler percentile: rank of current yield in the distribution
+        # Percentile: rank of current yield in the historical distribution
         yield_percentile = int(
             np.searchsorted(sorted(yield_window), current_yield) / len(yield_window) * 100
         )
@@ -297,17 +323,13 @@ def process_ticker(ticker: str) -> Optional[dict]:
         stage_data = classify_stage(closes)
         signal = calc_signal(yield_percentile, stage_data["stage"])
 
-        # 10-year yield history: downsample to ~40 annual/quarterly points for the chart
+        # 10-year yield history: downsample to ~40 points for the chart
         step = max(1, len(yield_series) // 40)
         chart_yields = [round(y, 2) for y in yield_series[::step][-40:]]
-        chart_labels = []
         total = len(chart_yields)
         start_year = date.today().year - 10
-        for i in range(total):
-            yr = start_year + int(i / total * 10)
-            chart_labels.append(str(yr))
+        chart_labels = [str(start_year + int(i / total * 10)) for i in range(total)]
 
-        # Consecutive years of dividend increases (approximated from dividend history)
         streak = estimate_streak(dividends)
 
         return {
@@ -337,10 +359,7 @@ def process_ticker(ticker: str) -> Optional[dict]:
 
 
 def estimate_streak(dividends: list[dict]) -> int:
-    """
-    Estimate consecutive years of dividend growth.
-    Groups dividends by year, compares annual totals.
-    """
+    """Estimate consecutive years of dividend growth from annual totals."""
     if not dividends:
         return 0
     annual = {}
@@ -393,7 +412,6 @@ def main():
             failed.append(ticker)
         time.sleep(RATE_LIMIT_DELAY)
 
-    # Summary stats
     buy_count = sum(1 for r in results if r["signal"] == "BUY")
     watch_count = sum(1 for r in results if r["signal"] == "WATCH")
     avoid_count = sum(1 for r in results if r["signal"] == "AVOID")
