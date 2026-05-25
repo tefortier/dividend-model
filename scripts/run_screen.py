@@ -1,7 +1,8 @@
 """
 No Excuses — Dividend Value Model
 Weekly screener: Dividend Achievers universe
-Signals: 10-year yield percentile + Weinstein Stage Analysis
+Signal: 10-year yield percentile (buy zone = 80th percentile+)
+Stage Analysis applied manually via TradingView before Smart Money Portfolio inclusion
 Runs every Sunday evening via GitHub Actions
 Output: data/dividend_screen.json
 """
@@ -23,7 +24,6 @@ BASE_URL = "https://api.polygon.io"
 
 # Full Dividend Achievers universe (current official constituents, 10+ consecutive years of increases)
 # Source: Nasdaq DAAARP index, May 2026. Update annually.
-# Non-US listed shares (ASX, MIL, XETR, NSE) excluded — Polygon.io covers US exchanges only.
 DIVIDEND_ACHIEVERS = [
     "A", "AAPL", "ABBV", "ABM", "ABT", "ACN", "ADC", "ADI", "ADM", "ADP",
     "AEE", "AEP", "AES", "AFG", "AFL", "AGM", "AGO", "AIT", "AIZ", "AJG",
@@ -70,13 +70,11 @@ DIVIDEND_ACHIEVERS = [
     "YORW", "ZION", "ZTS",
 ]
 
-# Deduplicate
 TICKERS = sorted(set(DIVIDEND_ACHIEVERS))
 
-STAGE_WINDOW = 30        # weeks for Weinstein MA
 YIELD_LOOKBACK = 520     # weeks (~10 years)
-RATE_LIMIT_DELAY = 0.12  # seconds between calls (free tier: 5 calls/min)
-MAX_RATE_LIMIT_RETRIES = 3  # max 429 retries before skipping ticker
+RATE_LIMIT_DELAY = 0.12  # seconds between calls
+MAX_RATE_LIMIT_RETRIES = 3
 
 
 def polygon_get(path: str, params: dict) -> Optional[dict]:
@@ -110,7 +108,7 @@ def polygon_get(path: str, params: dict) -> Optional[dict]:
 
 
 def get_weekly_closes(ticker: str, years: int = 11) -> list[dict]:
-    """Pull weekly OHLCV bars from Polygon for the last N years."""
+    """Pull weekly closing prices from Polygon."""
     end = date.today()
     start = end - timedelta(weeks=years * 52)
     url = f"/v2/aggs/ticker/{ticker}/range/1/week/{start}/{end}"
@@ -139,25 +137,20 @@ def get_dividends(ticker: str, years: int = 11) -> list[dict]:
 
 
 def get_ticker_details(ticker: str) -> dict:
-    """Pull company name, sector, market cap from Polygon."""
+    """Pull company name and sector from Polygon."""
     data = polygon_get(f"/v3/reference/tickers/{ticker}", {})
     if data and data.get("results"):
         r = data["results"]
         return {
             "company": r.get("name", ticker),
             "sector": r.get("sic_description", "Unknown"),
-            "market_cap": r.get("market_cap", 0),
         }
     time.sleep(RATE_LIMIT_DELAY)
-    return {"company": ticker, "sector": "Unknown", "market_cap": 0}
+    return {"company": ticker, "sector": "Unknown"}
 
 
 def calc_yield_series(closes: list[dict], dividends: list[dict]) -> list[float]:
-    """
-    For each weekly close, calculate trailing 12-month dividend yield.
-    TTM dividend = sum of all dividends paid in the 52 weeks prior to that date.
-    Yield = TTM dividend / close price
-    """
+    """Calculate trailing 12-month yield at each weekly close."""
     if not closes or not dividends:
         return []
 
@@ -184,178 +177,19 @@ def calc_yield_series(closes: list[dict], dividends: list[dict]) -> list[float]:
     return yield_series
 
 
-def classify_stage(closes: list[dict]) -> dict:
+def calc_signal(yield_pct: int) -> str:
     """
-    Weinstein Stage Analysis using 30-week SMA.
-    Strict rules:
-    - Stage 2 requires price above MA AND MA rising consistently for 4+ weeks
-    - Stage 4 requires price below MA AND MA declining
-    - Ambiguous cases default toward caution (Stage 3/4 over Stage 1/2)
+    Signal based purely on yield percentile.
+    Stage Analysis applied manually via TradingView before Smart Money Portfolio inclusion.
+    BUY   = yield 80th percentile+
+    WATCH = yield 60-79th percentile
+    HOLD  = below 60th percentile
     """
-    if len(closes) < STAGE_WINDOW + 8:
-        return {"stage": 0, "stage_label": "Insufficient data", "ma30": None, "price_vs_ma": None, "ma_slope": None, "vol_expanding": False}
-
-    prices = [bar["c"] for bar in closes]
-    volumes = [bar.get("v", 0) for bar in closes]
-
-    ma30_series = []
-    for i in range(STAGE_WINDOW - 1, len(prices)):
-        window = prices[i - STAGE_WINDOW + 1: i + 1]
-        ma30_series.append(np.mean(window))
-
-    current_price = prices[-1]
-    current_ma = ma30_series[-1]
-
-    # Primary slope: 5-week comparison
-    prev_ma_5 = ma30_series[-5] if len(ma30_series) >= 5 else ma30_series[0]
-    ma_slope = (current_ma - prev_ma_5) / prev_ma_5 * 100 if prev_ma_5 else 0
-
-    price_vs_ma = (current_price - current_ma) / current_ma * 100 if current_ma else 0
-
-    # Slope consistency: count how many of last 4 weeks the MA was rising
-    # MA is "consistently rising" if it rose in 3 of last 4 weekly steps
-    rising_weeks = 0
-    for i in range(-4, 0):
-        if len(ma30_series) >= abs(i) + 1:
-            if ma30_series[i] > ma30_series[i - 1]:
-                rising_weeks += 1
-
-    declining_weeks = 0
-    for i in range(-4, 0):
-        if len(ma30_series) >= abs(i) + 1:
-            if ma30_series[i] < ma30_series[i - 1]:
-                declining_weeks += 1
-
-    ma_consistently_rising = rising_weeks >= 3 and ma_slope > 0.3
-    ma_consistently_declining = declining_weeks >= 3 and ma_slope < -0.3
-
-    # Volume trend
-    recent_vol = np.mean(volumes[-8:]) if len(volumes) >= 8 else 0
-    prior_vol = np.mean(volumes[-16:-8]) if len(volumes) >= 16 else recent_vol
-    vol_expanding = recent_vol > prior_vol
-
-    # Stage classification - strict Weinstein
-    # Stage 2: price ABOVE MA AND MA consistently rising for 3+ of last 4 weeks
-    if price_vs_ma > 0 and ma_consistently_rising:
-        stage = 2
-        stage_label = "Stage 2 - Advance"
-    # Stage 4: price BELOW MA AND MA consistently declining
-    elif price_vs_ma < 0 and ma_consistently_declining:
-        stage = 4
-        stage_label = "Stage 4 - Decline"
-    # Stage 4: price well below MA regardless of slope (deep in decline)
-    elif price_vs_ma < -5:
-        stage = 4
-        stage_label = "Stage 4 - Decline"
-    # Stage 1: price near/above MA, MA flattening or just beginning to turn up
-    elif price_vs_ma > -3 and not ma_consistently_declining:
-        stage = 1
-        stage_label = "Stage 1 - Base"
-    # Stage 3: price below MA, MA still elevated but rolling over
-    elif price_vs_ma <= 0 and not ma_consistently_declining:
-        stage = 3
-        stage_label = "Stage 3 - Top"
-    # Fallback: anything else is Stage 4
-    else:
-        stage = 4
-        stage_label = "Stage 4 - Decline"
-
-    return {
-        "stage": stage,
-        "stage_label": stage_label,
-        "ma30": round(current_ma, 2),
-        "price_vs_ma": round(price_vs_ma, 2),
-        "ma_slope": round(ma_slope, 3),
-        "vol_expanding": vol_expanding,
-    }
-
-
-def calc_signal(yield_pct: int, stage: int) -> str:
-    """
-    Combined signal logic:
-    BUY   = yield 80th pct+ AND stage 1 or 2
-    AVOID = stage 3 or 4 regardless of yield
-    WATCH = yield 60-79th pct AND stage 1 or 2
-    HOLD  = everything else
-    """
-    if stage in (3, 4):
-        return "AVOID"
-    if yield_pct >= 80 and stage in (1, 2):
+    if yield_pct >= 80:
         return "BUY"
-    if yield_pct >= 60 and stage in (1, 2):
+    if yield_pct >= 60:
         return "WATCH"
     return "HOLD"
-
-
-def process_ticker(ticker: str) -> Optional[dict]:
-    log.info(f"Processing {ticker}")
-    try:
-        details = get_ticker_details(ticker)
-        closes = get_weekly_closes(ticker, years=11)
-        dividends = get_dividends(ticker, years=11)
-
-        if len(closes) < STAGE_WINDOW + 10:
-            log.warning(f"{ticker}: insufficient price history ({len(closes)} bars)")
-            return None
-
-        if not dividends:
-            log.warning(f"{ticker}: no dividend history, skipping")
-            return None
-
-        yield_series = calc_yield_series(closes, dividends)
-        if len(yield_series) < 52:
-            log.warning(f"{ticker}: insufficient yield data ({len(yield_series)} points)")
-            return None
-
-        # Use last 10 years (520 weeks) of yield data
-        yield_window = yield_series[-YIELD_LOOKBACK:]
-        current_yield = yield_window[-1]
-        yield_high = max(yield_window)
-        yield_low = min(yield_window)
-        yield_mean = np.mean(yield_window)
-
-        # Percentile: rank of current yield in the historical distribution
-        yield_percentile = int(
-            np.searchsorted(sorted(yield_window), current_yield) / len(yield_window) * 100
-        )
-        yield_percentile = max(0, min(100, yield_percentile))
-
-        stage_data = classify_stage(closes)
-        signal = calc_signal(yield_percentile, stage_data["stage"])
-
-        # 10-year yield history: downsample to ~40 points for the chart
-        step = max(1, len(yield_series) // 40)
-        chart_yields = [round(y, 2) for y in yield_series[::step][-40:]]
-        total = len(chart_yields)
-        start_year = date.today().year - 10
-        chart_labels = [str(start_year + int(i / total * 10)) for i in range(total)]
-
-        streak = estimate_streak(dividends)
-
-        return {
-            "ticker": ticker,
-            "company": details["company"],
-            "sector": simplify_sector(details["sector"]),
-            "currentYield": round(current_yield, 2),
-            "yieldHigh": round(yield_high, 2),
-            "yieldLow": round(yield_low, 2),
-            "yieldMean": round(yield_mean, 2),
-            "percentile": yield_percentile,
-            "stage": stage_data["stage"],
-            "stageLabel": stage_data["stage_label"],
-            "ma30": stage_data["ma30"],
-            "priceVsMa": stage_data["price_vs_ma"],
-            "maSlope": stage_data["ma_slope"],
-            "signal": signal,
-            "streak": streak,
-            "chartYields": chart_yields,
-            "chartLabels": chart_labels,
-            "lastUpdated": date.today().isoformat(),
-        }
-
-    except Exception as e:
-        log.error(f"{ticker} failed: {e}")
-        return None
 
 
 def estimate_streak(dividends: list[dict]) -> int:
@@ -399,6 +233,68 @@ def simplify_sector(raw: str) -> str:
     return "Other"
 
 
+def process_ticker(ticker: str) -> Optional[dict]:
+    log.info(f"Processing {ticker}")
+    try:
+        details = get_ticker_details(ticker)
+        closes = get_weekly_closes(ticker, years=11)
+        dividends = get_dividends(ticker, years=11)
+
+        if len(closes) < 52:
+            log.warning(f"{ticker}: insufficient price history ({len(closes)} bars)")
+            return None
+
+        if not dividends:
+            log.warning(f"{ticker}: no dividend history, skipping")
+            return None
+
+        yield_series = calc_yield_series(closes, dividends)
+        if len(yield_series) < 52:
+            log.warning(f"{ticker}: insufficient yield data ({len(yield_series)} points)")
+            return None
+
+        yield_window = yield_series[-YIELD_LOOKBACK:]
+        current_yield = yield_window[-1]
+        yield_high = max(yield_window)
+        yield_low = min(yield_window)
+        yield_mean = np.mean(yield_window)
+
+        yield_percentile = int(
+            np.searchsorted(sorted(yield_window), current_yield) / len(yield_window) * 100
+        )
+        yield_percentile = max(0, min(100, yield_percentile))
+
+        signal = calc_signal(yield_percentile)
+        streak = estimate_streak(dividends)
+
+        # Downsample yield history for chart (~40 points)
+        step = max(1, len(yield_series) // 40)
+        chart_yields = [round(y, 2) for y in yield_series[::step][-40:]]
+        total = len(chart_yields)
+        start_year = date.today().year - 10
+        chart_labels = [str(start_year + int(i / total * 10)) for i in range(total)]
+
+        return {
+            "ticker": ticker,
+            "company": details["company"],
+            "sector": simplify_sector(details["sector"]),
+            "currentYield": round(current_yield, 2),
+            "yieldHigh": round(yield_high, 2),
+            "yieldLow": round(yield_low, 2),
+            "yieldMean": round(yield_mean, 2),
+            "percentile": yield_percentile,
+            "signal": signal,
+            "streak": streak,
+            "chartYields": chart_yields,
+            "chartLabels": chart_labels,
+            "lastUpdated": date.today().isoformat(),
+        }
+
+    except Exception as e:
+        log.error(f"{ticker} failed: {e}")
+        return None
+
+
 def main():
     log.info(f"Starting No Excuses Dividend Screen — {date.today()}")
     results = []
@@ -414,7 +310,6 @@ def main():
 
     buy_count = sum(1 for r in results if r["signal"] == "BUY")
     watch_count = sum(1 for r in results if r["signal"] == "WATCH")
-    avoid_count = sum(1 for r in results if r["signal"] == "AVOID")
     avg_pct = round(np.mean([r["percentile"] for r in results]), 1) if results else 0
 
     output = {
@@ -423,11 +318,9 @@ def main():
             "universe": len(results),
             "buyCount": buy_count,
             "watchCount": watch_count,
-            "avoidCount": avoid_count,
             "avgPercentile": avg_pct,
             "lookbackYears": 10,
             "buyThreshold": 80,
-            "stageWindow": STAGE_WINDOW,
             "failed": failed,
         },
         "stocks": sorted(results, key=lambda x: x["percentile"], reverse=True)
