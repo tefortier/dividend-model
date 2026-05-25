@@ -125,7 +125,6 @@ def get_dividends(ticker: str, years: int = 11) -> list[dict]:
     params = {
         "ticker": ticker,
         "ex_dividend_date.gte": str(start),
-        "dividend_type": "CD",
         "limit": 1000,
         "sort": "ex_dividend_date",
         "order": "asc"
