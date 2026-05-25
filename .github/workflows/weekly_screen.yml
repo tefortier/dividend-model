@@ -1,308 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Model Room — Dividend Value Model</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0d0f12;
-    --surface: #13161b;
-    --surface2: #1a1e25;
-    --border: rgba(255,255,255,0.07);
-    --border2: rgba(255,255,255,0.12);
-    --text: #e8eaed;
-    --muted: #9ba3ac;
-    --faint: #7a8290;
-    --buy: #1D9E75;
-    --buy-bg: rgba(29,158,117,0.12);
-    --buy-text: #5dcaa5;
-    --watch: #BA7517;
-    --watch-bg: rgba(186,117,23,0.12);
-    --watch-text: #fac775;
-    --hold: #4a5058;
-    --hold-bg: rgba(74,80,88,0.15);
-    --hold-text: #9ba3ac;
-    --blue: #378ADD;
-    --mono: 'JetBrains Mono', 'Fira Mono', 'Cascadia Code', monospace;
-    --sans: 'Inter', system-ui, sans-serif;
-    --radius: 8px;
-  }
-  body { background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh; }
-  .app { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+name: Weekly Dividend Screen
 
-  .topbar { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; border-bottom: 0.5px solid var(--border); padding-bottom: 20px; }
-  .brand-name { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--faint); text-transform: uppercase; margin-bottom: 4px; }
-  .brand-title { font-size: 22px; font-weight: 600; color: var(--text); }
-  .brand-sub { font-size: 12px; color: var(--muted); font-family: var(--mono); margin-top: 3px; }
-  .update-badge { font-family: var(--mono); font-size: 10px; color: var(--faint); background: var(--surface); border: 0.5px solid var(--border); padding: 4px 10px; border-radius: 4px; }
+on:
+  schedule:
+    - cron: '0 1 * * 1'  # Every Monday 01:00 UTC = Sunday 8pm CT
+  workflow_dispatch:       # Manual trigger from GitHub UI
 
-  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
-  .metric { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 14px 16px; }
-  .metric-label { font-family: var(--mono); font-size: 10px; color: var(--faint); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
-  .metric-value { font-family: var(--mono); font-size: 24px; font-weight: 600; }
-  .metric-value.buy { color: var(--buy-text); }
-  .metric-value.watch { color: var(--watch-text); }
-  .metric-value.neutral { color: var(--text); }
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
-  .controls { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
-  .filter-btn { font-family: var(--mono); font-size: 11px; padding: 5px 12px; border: 0.5px solid var(--border2); border-radius: 4px; background: transparent; color: var(--muted); cursor: pointer; transition: all 0.15s; }
-  .filter-btn:hover { color: var(--text); border-color: var(--text); }
-  .filter-btn.active-all { background: var(--surface2); color: var(--text); border-color: var(--border2); }
-  .filter-btn.active-BUY { background: var(--buy-bg); color: var(--buy-text); border-color: var(--buy); }
-  .filter-btn.active-WATCH { background: var(--watch-bg); color: var(--watch-text); border-color: var(--watch); }
-  .filter-btn.active-HOLD { background: var(--hold-bg); color: var(--hold-text); border-color: var(--hold); }
-  .search { margin-left: auto; font-family: var(--mono); font-size: 11px; padding: 5px 12px; border: 0.5px solid var(--border2); border-radius: 4px; background: var(--surface); color: var(--text); width: 150px; }
-  .search:focus { outline: none; border-color: var(--blue); }
-  .search::placeholder { color: var(--faint); }
+jobs:
+  run-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: write
 
-  .table-wrap { border: 0.5px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 28px; }
-  table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  thead th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); padding: 10px 14px; background: var(--surface); border-bottom: 0.5px solid var(--border); text-align: left; cursor: pointer; white-space: nowrap; user-select: none; }
-  thead th:hover { color: var(--muted); }
-  thead th.r { text-align: right; }
-  td { padding: 10px 14px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
-  td.r { text-align: right; font-family: var(--mono); }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: var(--surface); cursor: pointer; }
-  tr.selected td { background: var(--surface2); }
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-  .ticker-cell .t { font-family: var(--mono); font-weight: 600; font-size: 13px; }
-  .ticker-cell .c { font-size: 11px; color: var(--muted); display: block; margin-top: 2px; }
-  .sector-tag { font-size: 10px; font-family: var(--mono); padding: 2px 8px; border-radius: 3px; background: var(--surface2); color: var(--faint); border: 0.5px solid var(--border); white-space: nowrap; }
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
-  .bar-cell { display: flex; align-items: center; gap: 8px; }
-  .bar-bg { flex: 1; height: 3px; background: var(--border2); border-radius: 2px; }
-  .bar-fill { height: 100%; border-radius: 2px; }
-  .pct-val { font-family: var(--mono); font-size: 11px; font-weight: 600; min-width: 36px; text-align: right; }
+      - name: Install dependencies
+        run: pip install requests numpy
 
-  .signal-badge { font-family: var(--mono); font-size: 10px; font-weight: 600; padding: 3px 9px; border-radius: 3px; letter-spacing: 0.04em; }
-  .sig-BUY { background: var(--buy-bg); color: var(--buy-text); }
-  .sig-WATCH { background: var(--watch-bg); color: var(--watch-text); }
-  .sig-HOLD { background: var(--hold-bg); color: var(--hold-text); }
+      - name: Run screener
+        env:
+          POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
+        run: python scripts/run_screen.py
 
-  .chart-panel { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 20px 24px; }
-  .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-  .chart-ticker { font-family: var(--mono); font-size: 14px; font-weight: 600; }
-  .chart-meta { font-family: var(--mono); font-size: 11px; color: var(--faint); }
-  .chart-legend { display: flex; gap: 20px; margin: 10px 0 6px; }
-  .legend-item { display: flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 10px; color: var(--faint); }
-  .legend-line { width: 20px; height: 2px; }
-  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
-
-  .workflow-note { margin-top: 16px; padding: 12px 16px; background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); font-family: var(--mono); font-size: 11px; color: var(--faint); line-height: 1.6; }
-  .workflow-note strong { color: var(--muted); }
-
-  .empty { padding: 48px; text-align: center; font-family: var(--mono); font-size: 12px; color: var(--faint); }
-  .error { padding: 32px; text-align: center; font-family: var(--mono); font-size: 12px; color: #f09595; background: rgba(163,45,45,0.12); border-radius: var(--radius); }
-  .sort-arrow { margin-left: 4px; opacity: 0.4; }
-  .sort-arrow.on { opacity: 1; }
-</style>
-</head>
-<body>
-<div class="app">
-  <div class="topbar">
-    <div>
-      <div class="brand-name">No Excuses — The Model Room</div>
-      <div class="brand-title">Dividend Value Model</div>
-      <div class="brand-sub">Dividend Achievers &nbsp;|&nbsp; 10-year yield percentile &nbsp;|&nbsp; Buy zone: 80th percentile+</div>
-    </div>
-    <span class="update-badge" id="update-badge">Loading...</span>
-  </div>
-
-  <div class="metrics">
-    <div class="metric"><div class="metric-label">Universe</div><div class="metric-value neutral" id="m-universe">—</div></div>
-    <div class="metric"><div class="metric-label">BUY signals</div><div class="metric-value buy" id="m-buy">—</div></div>
-    <div class="metric"><div class="metric-label">Watch</div><div class="metric-value watch" id="m-watch">—</div></div>
-    <div class="metric"><div class="metric-label">Avg percentile</div><div class="metric-value neutral" id="m-avg">—</div></div>
-  </div>
-
-  <div class="controls">
-    <button class="filter-btn active-all" onclick="setFilter('all',this)">All</button>
-    <button class="filter-btn" onclick="setFilter('BUY',this)">BUY zone</button>
-    <button class="filter-btn" onclick="setFilter('WATCH',this)">Watch</button>
-    <button class="filter-btn" onclick="setFilter('HOLD',this)">Hold</button>
-    <input class="search" id="search" placeholder="Search ticker..." oninput="renderTable()" />
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th onclick="sortBy('ticker')" style="width:180px">Ticker <span class="sort-arrow" id="sa-ticker">↕</span></th>
-          <th onclick="sortBy('sector')" style="width:110px">Sector</th>
-          <th onclick="sortBy('currentYield')" class="r" style="width:80px">Yield <span class="sort-arrow" id="sa-currentYield">↕</span></th>
-          <th onclick="sortBy('yieldHigh')" class="r" style="width:80px">10yr Hi <span class="sort-arrow" id="sa-yieldHigh">↕</span></th>
-          <th onclick="sortBy('yieldLow')" class="r" style="width:80px">10yr Lo <span class="sort-arrow" id="sa-yieldLow">↕</span></th>
-          <th onclick="sortBy('percentile')" style="width:180px">Yield %ile <span class="sort-arrow on" id="sa-percentile">↓</span></th>
-          <th onclick="sortBy('streak')" class="r" style="width:80px">Streak <span class="sort-arrow" id="sa-streak">↕</span></th>
-          <th class="r" style="width:80px">Signal</th>
-        </tr>
-      </thead>
-      <tbody id="tbody"></tbody>
-    </table>
-  </div>
-
-  <div class="chart-panel">
-    <div class="chart-header">
-      <span class="chart-ticker" id="chart-name">—</span>
-      <span class="chart-meta" id="chart-meta">—</span>
-    </div>
-    <div class="chart-legend">
-      <span class="legend-item"><span class="legend-line" style="background:#378ADD;"></span>10-year yield history</span>
-      <span class="legend-item"><span class="legend-line" style="background:#1D9E75; border-top: 1px dashed #1D9E75;"></span>Buy threshold (80th pct)</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#E24B4A;"></span>Current yield</span>
-    </div>
-    <div style="position:relative; width:100%; height:200px;">
-      <canvas id="yieldChart"></canvas>
-    </div>
-  </div>
-
-  <div class="workflow-note">
-    <strong>How to use this screen:</strong> BUY signals identify Dividend Achievers whose yield is in the top 20% of their 10-year history. This is the fundamental filter. Before acting, review each name on TradingView to confirm Stage 1 or Stage 2 price action. Names that pass both filters are candidates for the Smart Money Portfolio.
-  </div>
-</div>
-
-<script>
-const DATA_URL = "https://raw.githubusercontent.com/tefortier/dividend-model/main/data/dividend_screen.json";
-
-let allStocks = [];
-let filterMode = "all";
-let sortKey = "percentile";
-let sortDir = -1;
-let selectedTicker = null;
-let chartInstance = null;
-
-function barColor(sig) {
-  if (sig === "BUY") return "#1D9E75";
-  if (sig === "WATCH") return "#BA7517";
-  return "#4a5058";
-}
-
-function setFilter(mode, btn) {
-  filterMode = mode;
-  document.querySelectorAll(".filter-btn").forEach(b => b.className = "filter-btn");
-  btn.className = "filter-btn active-" + mode;
-  renderTable();
-}
-
-function sortBy(key) {
-  if (sortKey === key) { sortDir *= -1; } else { sortKey = key; sortDir = -1; }
-  document.querySelectorAll(".sort-arrow").forEach(el => { el.textContent = "↕"; el.classList.remove("on"); });
-  const el = document.getElementById("sa-" + key);
-  if (el) { el.textContent = sortDir === -1 ? "↓" : "↑"; el.classList.add("on"); }
-  renderTable();
-}
-
-function renderTable() {
-  const q = (document.getElementById("search")?.value || "").toLowerCase();
-  let data = allStocks.filter(s => {
-    if (filterMode !== "all" && s.signal !== filterMode) return false;
-    if (q && !s.ticker.toLowerCase().includes(q) && !(s.company || "").toLowerCase().includes(q)) return false;
-    return true;
-  });
-  data.sort((a, b) => {
-    let av = a[sortKey], bv = b[sortKey];
-    if (typeof av === "string") return sortDir * av.localeCompare(bv);
-    return sortDir * ((bv || 0) - (av || 0));
-  });
-
-  const tbody = document.getElementById("tbody");
-  tbody.innerHTML = "";
-  if (!data.length) { tbody.innerHTML = `<tr><td colspan="8" class="empty">No stocks match current filters.</td></tr>`; return; }
-
-  data.forEach(s => {
-    const pct = s.percentile || 0;
-    const bc = barColor(s.signal);
-    const row = document.createElement("tr");
-    if (s.ticker === selectedTicker) row.classList.add("selected");
-    row.innerHTML = `
-      <td class="ticker-cell"><span class="t">${s.ticker}</span><span class="c">${s.company || ""}</span></td>
-      <td><span class="sector-tag">${s.sector || "—"}</span></td>
-      <td class="r">${(s.currentYield || 0).toFixed(2)}%</td>
-      <td class="r">${(s.yieldHigh || 0).toFixed(2)}%</td>
-      <td class="r">${(s.yieldLow || 0).toFixed(2)}%</td>
-      <td>
-        <div class="bar-cell">
-          <div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${bc};"></div></div>
-          <span class="pct-val" style="color:${bc};">${pct}%</span>
-        </div>
-      </td>
-      <td class="r">${s.streak || 0}yr</td>
-      <td class="r"><span class="signal-badge sig-${s.signal}">${s.signal}</span></td>
-    `;
-    row.addEventListener("click", () => { selectedTicker = s.ticker; renderChart(s); renderTable(); });
-    tbody.appendChild(row);
-  });
-
-  if (!selectedTicker && data.length) { selectedTicker = data[0].ticker; renderChart(data[0]); }
-}
-
-function renderChart(s) {
-  document.getElementById("chart-name").textContent = s.ticker + " — " + (s.company || "");
-  document.getElementById("chart-meta").textContent =
-    `Current yield: ${(s.currentYield||0).toFixed(2)}% &nbsp;|&nbsp; 10yr high: ${(s.yieldHigh||0).toFixed(2)}% &nbsp;|&nbsp; 10yr low: ${(s.yieldLow||0).toFixed(2)}% &nbsp;|&nbsp; Mean: ${(s.yieldMean||0).toFixed(2)}%`;
-
-  const labels = s.chartLabels || [];
-  const history = s.chartYields || [];
-  const buyThreshold = s.yieldLow + (s.yieldHigh - s.yieldLow) * 0.80;
-  const thresholdData = labels.map(() => parseFloat(buyThreshold.toFixed(2)));
-  const currentPoint = history.map((v, i) => i === history.length - 1 ? v : null);
-
-  if (chartInstance) { chartInstance.destroy(); }
-  chartInstance = new Chart(document.getElementById("yieldChart"), {
-    type: "line",
-    data: {
-      labels,
-      datasets: [
-        { label: "Yield history", data: history, borderColor: "#378ADD", backgroundColor: "rgba(55,138,221,0.07)", borderWidth: 2, fill: true, tension: 0.35, pointRadius: 0, pointHoverRadius: 4 },
-        { label: "Buy threshold", data: thresholdData, borderColor: "#1D9E75", borderWidth: 1.5, borderDash: [5, 4], fill: false, pointRadius: 0, tension: 0 },
-        { label: "Current yield", data: currentPoint, borderColor: "#E24B4A", backgroundColor: "#E24B4A", borderWidth: 0, pointRadius: 7, pointHoverRadius: 9, showLine: false }
-      ]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: { backgroundColor: "#13161b", borderColor: "rgba(255,255,255,0.1)", borderWidth: 1, titleColor: "#8b9299", bodyColor: "#e8eaed",
-          callbacks: { label: ctx => " " + ctx.dataset.label + ": " + (ctx.parsed.y !== null ? ctx.parsed.y.toFixed(2) + "%" : "") }
-        }
-      },
-      scales: {
-        x: { grid: { color: "rgba(255,255,255,0.04)" }, ticks: { font: { family: "monospace", size: 10 }, color: "#7a8290", maxRotation: 0, maxTicksLimit: 10 }, border: { color: "rgba(255,255,255,0.07)" } },
-        y: { grid: { color: "rgba(255,255,255,0.04)" }, ticks: { font: { family: "monospace", size: 10 }, color: "#7a8290", callback: v => v.toFixed(1) + "%" }, border: { color: "rgba(255,255,255,0.07)" } }
-      }
-    }
-  });
-}
-
-function updateMetrics(meta, stocks) {
-  document.getElementById("m-universe").textContent = meta.universe || stocks.length;
-  document.getElementById("m-buy").textContent = meta.buyCount || stocks.filter(s => s.signal === "BUY").length;
-  document.getElementById("m-watch").textContent = meta.watchCount || stocks.filter(s => s.signal === "WATCH").length;
-  document.getElementById("m-avg").textContent = (meta.avgPercentile || 0).toFixed(0) + "th";
-  const ts = meta.generatedAt ? new Date(meta.generatedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "—";
-  document.getElementById("update-badge").textContent = "Updated " + ts;
-}
-
-async function loadData() {
-  document.getElementById("tbody").innerHTML = `<tr><td colspan="8" class="empty">Loading screen data...</td></tr>`;
-  try {
-    const r = await fetch(DATA_URL);
-    if (!r.ok) throw new Error("HTTP " + r.status);
-    const json = await r.json();
-    allStocks = json.stocks || [];
-    updateMetrics(json.meta || {}, allStocks);
-    if (allStocks.length) { selectedTicker = allStocks[0].ticker; }
-    renderTable();
-  } catch (e) {
-    document.getElementById("tbody").innerHTML = `<tr><td colspan="8"><div class="error">Could not load screen data: ${e.message}</div></td></tr>`;
-  }
-}
-
-loadData();
-</script>
-</body>
-</html>
+      - name: Commit updated JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase
+          git add data/dividend_screen.json
+          git diff --staged --quiet || git commit -m "Weekly screen update $(date -u +'%Y-%m-%d')"
+          git push
