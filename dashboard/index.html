@@ -178,7 +178,7 @@ function sortBy(key) {
 function getFiltered() {
   const q = (document.getElementById("search")?.value || "").toLowerCase();
   return allStocks.filter(s => {
-    if (filterMode !== "all" && s.signal !== filterMode) return false;
+    if (filterMode !== "all" && s.signal !== filterMode && !(filterMode === "EXTENDED" && s.signal === "HOLD")) return false;
     if (q && !s.ticker.toLowerCase().includes(q) && !(s.company || "").toLowerCase().includes(q)) return false;
     return true;
   });
