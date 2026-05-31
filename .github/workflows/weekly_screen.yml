@@ -32,11 +32,9 @@ jobs:
           POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
         run: python scripts/run_screen.py
 
-      - name: Commit updated JSON
-        run: |
+      run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/dividend_screen.json
-          git pull --rebase
           git diff --staged --quiet || git commit -m "Weekly screen update $(date -u +'%Y-%m-%d')"
           git push
