@@ -36,7 +36,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase
           git add data/dividend_screen.json
+          git pull --rebase
           git diff --staged --quiet || git commit -m "Weekly screen update $(date -u +'%Y-%m-%d')"
           git push
