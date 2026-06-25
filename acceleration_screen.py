@@ -1,26 +1,19 @@
 """
 Model Room: Acceleration Screen, Phase 1 (Polygon, reported-only)
 
-Runs entirely on Polygon's prices + financials, which your plan includes.
-No analyst data (your plan returned 403/404 on the Benzinga ratings/estimates
-endpoints), so the engine uses the two reported signals that are its core:
+PRESET TO TEST MODE: runs only the five tickers below.
+To go live on the full universe later, see the TEST/LIVE switch in main().
 
-  A. Sequential revenue acceleration  (YoY-of-YoY, from quarterly financials)
-  B. Earnings surprise proxy          (EPS growth + margin trend, reported)
+Runs on Polygon prices + financials (your plan includes these).
+No analyst data, so the engine uses two reported signals:
+  A. Sequential revenue acceleration (YoY-of-YoY, from quarterly financials)
+  B. Earnings momentum proxy (reported YoY EPS growth + gross-margin trend)
 
-Quality gates and ranking run on the same financials endpoint. The estimates
-snapshot is omitted because there are no estimates to snapshot; if you later
-add Polygon's analyst add-on, the revision overlay slots back in.
-
-Dependencies: requests, pandas  ->  pip install requests pandas
-Key: POLYGON_API_KEY (already in your GitHub secrets).
-
-NOTE: field paths reflect the live JSON your check.py returned. If Polygon
-shifts the schema, every path lives in the GETTERS section below.
+Dependencies: requests, pandas
+Key: POLYGON_API_KEY (already in GitHub secrets).
 """
 
 import os
-import json
 import time
 import logging
 from datetime import datetime
@@ -35,21 +28,13 @@ import pandas as pd
 API_KEY = os.environ.get("POLYGON_API_KEY", "")
 BASE = "https://api.polygon.io"
 
-# Universe filters
-MIN_MARKET_CAP = 1_000_000_000          # $1B
-EXCLUDED_SECTORS_SIC = {                # coarse SIC-prefix exclusions
-    "49",   # utilities (electric, gas, water, sanitary)
-    "2836", # biological products
-    "8731", # commercial physical & biological research
-}
-# Polygon gives SIC codes, not GICS sectors. We exclude utilities and the
-# biotech-ish SIC buckets. Refine once you see what the universe returns.
+MIN_MARKET_CAP = 1_000_000_000
+EXCLUDED_SECTORS_SIC = {"49", "2836", "8731"}   # utilities, biologics, research
 
-WEIGHTS = {"A": 0.60, "B": 0.40}        # reported core only
-MIN_QUARTERS = 6                        # need q0..q-5 for YoY-of-YoY
+WEIGHTS = {"A": 0.60, "B": 0.40}
+MIN_QUARTERS = 6
 TOP_N = 25
-
-OUT_DIR = "acceleration_output"         # separate from ./dashboard
+OUT_DIR = "acceleration_output"
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s  %(message)s")
 log = logging.getLogger("accel")
@@ -78,11 +63,10 @@ def poly_get(url, params=None, retries=3, pause=0.2):
 
 
 # ----------------------------------------------------------------------
-# GETTERS  (every Polygon field path lives here)
+# Getters (all Polygon field paths live here)
 # ----------------------------------------------------------------------
 
 def get_quarterly_financials(ticker, limit=8):
-    """Return quarterly financial records, newest first."""
     url = f"{BASE}/vX/reference/financials"
     data = poly_get(url, {"ticker": ticker, "timeframe": "quarterly",
                           "order": "desc", "sort": "period_of_report_date",
@@ -92,7 +76,6 @@ def get_quarterly_financials(ticker, limit=8):
     return data["results"]
 
 def _nested(record, *path):
-    """Safely walk record['financials'][a][b]['value']."""
     node = record.get("financials", {})
     for key in path:
         if not isinstance(node, dict) or key not in node:
@@ -103,11 +86,9 @@ def _nested(record, *path):
     return None
 
 def rev_of(record):
-    # income_statement.revenues.value
     return _nested(record, "income_statement", "revenues")
 
 def eps_of(record):
-    # diluted EPS; fall back to basic
     v = _nested(record, "income_statement", "diluted_earnings_per_share")
     if v is None:
         v = _nested(record, "income_statement", "basic_earnings_per_share")
@@ -116,30 +97,20 @@ def eps_of(record):
 def gross_profit_of(record):
     return _nested(record, "income_statement", "gross_profit")
 
-
 def get_overview(ticker):
     url = f"{BASE}/v3/reference/tickers/{ticker}"
     data = poly_get(url)
     return (data or {}).get("results")
 
-def get_last_price(ticker):
-    url = f"{BASE}/v2/aggs/ticker/{ticker}/prev"
-    data = poly_get(url)
-    res = (data or {}).get("results")
-    if res and isinstance(res, list):
-        return res[0].get("c")   # previous close
-    return None
-
 
 # ----------------------------------------------------------------------
-# universe = ["PAYX", "STZ", "KMB", "CWT", "BCRX"]
+# Universe (used only in LIVE mode)
 # ----------------------------------------------------------------------
 
 def build_universe(max_pages=20):
     """Page through active US common stocks."""
     url = f"{BASE}/v3/reference/tickers"
-    params = {"market": "stocks", "type": "CS", "active": "true",
-              "limit": 1000}
+    params = {"market": "stocks", "type": "CS", "active": "true", "limit": 1000}
     tickers, pages = [], 0
     while url and pages < max_pages:
         data = poly_get(url, params if pages == 0 else None)
@@ -161,23 +132,17 @@ def signal_A_acceleration(quarters):
     if len(quarters) < MIN_QUARTERS:
         return None
     try:
-        rev = [float(rev_of(q)) for q in quarters[:6]]
+        rev = [rev_of(q) for q in quarters[:6]]
+        rev = [float(r) for r in rev]
     except (TypeError, ValueError):
         return None
-    if any(r is None for r in rev) or rev[4] <= 0 or rev[5] <= 0:
+    if rev[4] <= 0 or rev[5] <= 0:
         return None
     yoy_curr = rev[0] / rev[4] - 1
     yoy_prior = rev[1] / rev[5] - 1
-    return {"accel": yoy_curr - yoy_prior,
-            "yoy_curr": yoy_curr, "yoy_prior": yoy_prior}
+    return {"accel": yoy_curr - yoy_prior, "yoy_curr": yoy_curr, "yoy_prior": yoy_prior}
 
 def signal_B_eps_and_margin(quarters):
-    """Reported surprise proxy: YoY EPS growth + gross-margin trend.
-
-    Without analyst estimates there is no true surprise, so we proxy
-    'positive earnings momentum' with YoY diluted-EPS growth and an
-    improving gross margin, both reported.
-    """
     if len(quarters) < 5:
         return None
     try:
@@ -186,13 +151,14 @@ def signal_B_eps_and_margin(quarters):
         gp0 = gross_profit_of(quarters[0]); gp1 = gross_profit_of(quarters[1])
     except (TypeError, ValueError):
         return None
-    if None in (eps0, eps4, rev0, rev1, gp0, gp1) or eps4 == 0 or rev0 == 0 or rev1 == 0:
+    if None in (eps0, eps4, rev0, rev1, gp0, gp1):
+        return None
+    if eps4 == 0 or rev0 == 0 or rev1 == 0:
         return None
     eps_growth = (eps0 - eps4) / abs(eps4)
     margin0 = gp0 / rev0
     margin1 = gp1 / rev1
     margin_trend = margin0 - margin1
-    # blended score: EPS growth carries it, margin trend confirms
     score = eps_growth + (margin_trend * 2.0)
     return {"score": score, "eps_growth": eps_growth,
             "margin": margin0, "margin_trend": margin_trend}
@@ -206,20 +172,14 @@ def excluded_by_sic(overview):
     sic = str((overview or {}).get("sic_code") or "")
     if not sic:
         return False
-    for bad in EXCLUDED_SECTORS_SIC:
-        if sic.startswith(bad):
-            return True
-    return False
+    return any(sic.startswith(bad) for bad in EXCLUDED_SECTORS_SIC)
 
 def passes_gates(quarters, overview):
-    # market cap
     mc = (overview or {}).get("market_cap") or 0
     if mc < MIN_MARKET_CAP:
         return False, "market_cap"
-    # sector exclusion
     if excluded_by_sic(overview):
         return False, "excluded_sic"
-    # margin floor and trend (latest vs prior quarter)
     try:
         rev0 = rev_of(quarters[0]); rev1 = rev_of(quarters[1])
         gp0 = gross_profit_of(quarters[0]); gp1 = gross_profit_of(quarters[1])
@@ -241,26 +201,33 @@ def main():
     if not API_KEY:
         raise SystemExit("POLYGON_API_KEY not set")
 
-    universe = build_universe()
-    records = []
+    # ---- TEST / LIVE switch -------------------------------------------
+    # TEST mode (active): five known tickers, fast.
+    universe = ["PAYX", "STZ", "KMB", "CWT", "BCRX"]
+    # LIVE mode: comment the line above and uncomment the line below.
+    # universe = build_universe()
+    # -------------------------------------------------------------------
 
+    records = []
     for i, sym in enumerate(universe):
         if i % 100 == 0:
-            log.info("processing %d / %d  (survivors: %d)",
-                     i, len(universe), len(records))
+            log.info("processing %d / %d  (survivors: %d)", i, len(universe), len(records))
 
         quarters = get_quarterly_financials(sym)
         if len(quarters) < MIN_QUARTERS:
+            log.info("%s: only %d quarters, skipping", sym, len(quarters))
             continue
         overview = get_overview(sym)
 
         ok, reason = passes_gates(quarters, overview)
         if not ok:
+            log.info("%s: gated out (%s)", sym, reason)
             continue
 
         A = signal_A_acceleration(quarters)
         B = signal_B_eps_and_margin(quarters)
         if A is None or B is None:
+            log.info("%s: signal compute failed", sym)
             continue
 
         records.append({
@@ -277,7 +244,7 @@ def main():
         })
 
     if not records:
-        log.error("no survivors; check field paths in GETTERS")
+        log.error("no survivors; check field paths or gates")
         return
 
     df = pd.DataFrame(records)
@@ -289,12 +256,11 @@ def main():
     df["runDate"] = datetime.utcnow().date().isoformat()
 
     os.makedirs(OUT_DIR, exist_ok=True)
-    cols = ["rank", "ticker", "compositeScore", "accel", "yoy_curr",
-            "yoy_prior", "eps_growth", "margin", "margin_trend",
-            "marketCap", "sic", "runDate"]
+    cols = ["rank", "ticker", "compositeScore", "accel", "yoy_curr", "yoy_prior",
+            "eps_growth", "margin", "margin_trend", "marketCap", "sic", "runDate"]
     df[cols].head(TOP_N).to_csv(f"{OUT_DIR}/acceleration_queue.csv", index=False)
     df[cols].to_json(f"{OUT_DIR}/acceleration_full.json", orient="records", indent=2)
-    log.info("done. wrote top %d of %d survivors", TOP_N, len(df))
+    log.info("done. wrote %d survivors", len(df))
 
 
 if __name__ == "__main__":
