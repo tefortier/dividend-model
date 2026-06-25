@@ -1,25 +1,25 @@
 """
 Model Room: Acceleration Screen, Phase 1 (Polygon, reported-only)
 
-PRESET TO TEST MODE: runs only the five tickers below.
-To go live on the full universe later, see the TEST/LIVE switch in main().
+LIVE-READY: reads the S&P 1500 universe from sp1500.csv and paces itself
+to the Polygon rate limit. To revert to a quick 5-ticker test, flip the
+TEST/LIVE switch in main().
 
-Runs on Polygon prices + financials (your plan includes these).
-No analyst data, so the engine uses two reported signals:
-  A. Sequential revenue acceleration (YoY-of-YoY, from quarterly financials)
+Signals (reported-only, your Polygon plan covers these):
+  A. Sequential revenue acceleration (YoY-of-YoY) with base-effect fix
   B. Earnings momentum proxy (reported YoY EPS growth + gross-margin trend)
 
-v1.1 changes:
-  - Base-effect fix: a name must actually be growing now (yoy_curr above a
-    floor), and acceleration credit off a NEGATIVE prior-year base is damped,
-    so "recovering from collapse" no longer outranks genuine growers.
-  - Cleaned up the datetime deprecation warning.
+Files in repo:
+  acceleration_screen.py   (this file)
+  sp1500.csv               (universe: one column 'ticker')
+  acceleration_output/     (written by the run)
 
 Dependencies: requests, pandas
-Key: POLYGON_API_KEY (already in GitHub secrets).
+Key: POLYGON_API_KEY (GitHub secret).
 """
 
 import os
+import csv
 import time
 import logging
 from datetime import datetime, timezone
@@ -33,42 +33,53 @@ import pandas as pd
 
 API_KEY = os.environ.get("POLYGON_API_KEY", "")
 BASE = "https://api.polygon.io"
+UNIVERSE_FILE = "sp1500.csv"
 
 MIN_MARKET_CAP = 1_000_000_000
 EXCLUDED_SECTORS_SIC = {"49", "2836", "8731"}   # utilities, biologics, research
 
-# Base-effect controls (the v1.1 fix)
-MIN_CURRENT_GROWTH = 0.03     # must be growing > 3% YoY this quarter to qualify
-NEG_BASE_DAMPING = 0.25       # credit multiplier when prior-year base was negative
+MIN_CURRENT_GROWTH = 0.03     # must be growing > 3% YoY now to qualify
+NEG_BASE_DAMPING = 0.25       # damp acceleration off a negative prior-year base
 
 WEIGHTS = {"A": 0.60, "B": 0.40}
 MIN_QUARTERS = 6
 TOP_N = 25
 OUT_DIR = "acceleration_output"
 
+# Rate limiting. Polygon lower tiers allow ~5 calls/min; paid tiers far more.
+# CALLS_PER_MIN sets the pace. If your plan is unlimited, raise it high.
+# This screen makes 2 calls per ticker (financials + overview).
+CALLS_PER_MIN = 100           # conservative default; safe to raise on paid tiers
+_MIN_INTERVAL = 60.0 / max(CALLS_PER_MIN, 1)
+_last_call = [0.0]
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s  %(message)s")
 log = logging.getLogger("accel")
 
 
 # ----------------------------------------------------------------------
-# Polygon request helper
+# Polygon request helper (rate-paced)
 # ----------------------------------------------------------------------
 
-def poly_get(url, params=None, retries=3, pause=0.2):
+def poly_get(url, params=None, retries=4):
     params = dict(params or {})
     params["apiKey"] = API_KEY
+    # pace to the configured rate
+    wait = _MIN_INTERVAL - (time.time() - _last_call[0])
+    if wait > 0:
+        time.sleep(wait)
     for attempt in range(retries):
         try:
             r = requests.get(url, params=params, timeout=30)
+            _last_call[0] = time.time()
             if r.status_code == 200:
-                time.sleep(pause)
                 return r.json()
-            if r.status_code in (429, 503):
-                time.sleep(2 ** attempt)
+            if r.status_code in (429, 503):     # throttled, back off and retry
+                time.sleep(min(2 ** attempt * 5, 60))
                 continue
             return None
         except requests.RequestException:
-            time.sleep(1)
+            time.sleep(2)
     return None
 
 
@@ -114,24 +125,21 @@ def get_overview(ticker):
 
 
 # ----------------------------------------------------------------------
-# Universe (used only in LIVE mode)
+# Universe
 # ----------------------------------------------------------------------
 
-def build_universe(max_pages=20):
-    """Page through active US common stocks."""
-    url = f"{BASE}/v3/reference/tickers"
-    params = {"market": "stocks", "type": "CS", "active": "true", "limit": 1000}
-    tickers, pages = [], 0
-    while url and pages < max_pages:
-        data = poly_get(url, params if pages == 0 else None)
-        if not data or "results" not in data:
-            break
-        for row in data["results"]:
-            tickers.append(row.get("ticker"))
-        url = data.get("next_url")
-        pages += 1
-    log.info("raw universe: %d tickers", len(tickers))
-    return [t for t in tickers if t]
+def load_universe():
+    if not os.path.exists(UNIVERSE_FILE):
+        raise SystemExit(f"{UNIVERSE_FILE} not found in repo")
+    tickers = []
+    with open(UNIVERSE_FILE) as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            t = (row.get("ticker") or "").strip().upper()
+            if t:
+                tickers.append(t)
+    log.info("loaded %d tickers from %s", len(tickers), UNIVERSE_FILE)
+    return tickers
 
 
 # ----------------------------------------------------------------------
@@ -139,12 +147,6 @@ def build_universe(max_pages=20):
 # ----------------------------------------------------------------------
 
 def signal_A_acceleration(quarters):
-    """YoY-of-YoY revenue acceleration, with a base-effect fix.
-
-    - Requires current YoY growth above MIN_CURRENT_GROWTH (must be growing now).
-    - If the prior-year base was negative (recovering from a decline), the raw
-      acceleration overstates momentum, so the credit is damped.
-    """
     if len(quarters) < MIN_QUARTERS:
         return None
     try:
@@ -155,18 +157,10 @@ def signal_A_acceleration(quarters):
         return None
     yoy_curr = rev[0] / rev[4] - 1
     yoy_prior = rev[1] / rev[5] - 1
-
-    # must actually be growing now, not just less-bad than last year
     if yoy_curr < MIN_CURRENT_GROWTH:
         return None
-
     raw_accel = yoy_curr - yoy_prior
-    # damp acceleration that comes off a negative prior-year base
-    if yoy_prior < 0:
-        accel = raw_accel * NEG_BASE_DAMPING
-    else:
-        accel = raw_accel
-
+    accel = raw_accel * NEG_BASE_DAMPING if yoy_prior < 0 else raw_accel
     return {"accel": accel, "raw_accel": raw_accel,
             "yoy_curr": yoy_curr, "yoy_prior": yoy_prior}
 
@@ -230,35 +224,30 @@ def main():
         raise SystemExit("POLYGON_API_KEY not set")
 
     # ---- TEST / LIVE switch -------------------------------------------
-    # TEST mode (active): five known tickers, fast.
-    universe = ["PAYX", "STZ", "KMB", "CWT", "BCRX"]
-    # LIVE mode: comment the line above and uncomment the line below.
-    # universe = build_universe()
+    # LIVE mode (active): full S&P 1500 from file.
+    universe = load_universe()
+    # TEST mode: comment the line above and uncomment the line below.
+    # universe = ["PAYX", "STZ", "KMB", "CWT", "BCRX"]
     # -------------------------------------------------------------------
 
+    total = len(universe)
     records = []
     for i, sym in enumerate(universe):
-        if i % 100 == 0:
-            log.info("processing %d / %d  (survivors: %d)", i, len(universe), len(records))
+        if i % 50 == 0:
+            log.info("processing %d / %d  (survivors so far: %d)", i, total, len(records))
 
         quarters = get_quarterly_financials(sym)
         if len(quarters) < MIN_QUARTERS:
-            log.info("%s: only %d quarters, skipping", sym, len(quarters))
             continue
         overview = get_overview(sym)
 
         ok, reason = passes_gates(quarters, overview)
         if not ok:
-            log.info("%s: gated out (%s)", sym, reason)
             continue
 
         A = signal_A_acceleration(quarters)
         B = signal_B_eps_and_margin(quarters)
-        if A is None:
-            log.info("%s: not growing now or signal A failed", sym)
-            continue
-        if B is None:
-            log.info("%s: signal B failed", sym)
+        if A is None or B is None:
             continue
 
         records.append({
@@ -275,8 +264,9 @@ def main():
             "margin_trend": B["margin_trend"],
         })
 
+    log.info("scan complete: %d survivors of %d", len(records), total)
     if not records:
-        log.error("no survivors; check field paths or gates")
+        log.error("no survivors; check field paths, gates, or universe file")
         return
 
     df = pd.DataFrame(records)
@@ -293,7 +283,7 @@ def main():
             "marketCap", "sic", "runDate"]
     df[cols].head(TOP_N).to_csv(f"{OUT_DIR}/acceleration_queue.csv", index=False)
     df[cols].to_json(f"{OUT_DIR}/acceleration_full.json", orient="records", indent=2)
-    log.info("done. wrote %d survivors", len(df))
+    log.info("done. wrote top %d and full list of %d survivors", TOP_N, len(df))
 
 
 if __name__ == "__main__":
