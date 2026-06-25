@@ -9,6 +9,12 @@ No analyst data, so the engine uses two reported signals:
   A. Sequential revenue acceleration (YoY-of-YoY, from quarterly financials)
   B. Earnings momentum proxy (reported YoY EPS growth + gross-margin trend)
 
+v1.1 changes:
+  - Base-effect fix: a name must actually be growing now (yoy_curr above a
+    floor), and acceleration credit off a NEGATIVE prior-year base is damped,
+    so "recovering from collapse" no longer outranks genuine growers.
+  - Cleaned up the datetime deprecation warning.
+
 Dependencies: requests, pandas
 Key: POLYGON_API_KEY (already in GitHub secrets).
 """
@@ -16,7 +22,7 @@ Key: POLYGON_API_KEY (already in GitHub secrets).
 import os
 import time
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 
 import requests
 import pandas as pd
@@ -30,6 +36,10 @@ BASE = "https://api.polygon.io"
 
 MIN_MARKET_CAP = 1_000_000_000
 EXCLUDED_SECTORS_SIC = {"49", "2836", "8731"}   # utilities, biologics, research
+
+# Base-effect controls (the v1.1 fix)
+MIN_CURRENT_GROWTH = 0.03     # must be growing > 3% YoY this quarter to qualify
+NEG_BASE_DAMPING = 0.25       # credit multiplier when prior-year base was negative
 
 WEIGHTS = {"A": 0.60, "B": 0.40}
 MIN_QUARTERS = 6
@@ -129,18 +139,36 @@ def build_universe(max_pages=20):
 # ----------------------------------------------------------------------
 
 def signal_A_acceleration(quarters):
+    """YoY-of-YoY revenue acceleration, with a base-effect fix.
+
+    - Requires current YoY growth above MIN_CURRENT_GROWTH (must be growing now).
+    - If the prior-year base was negative (recovering from a decline), the raw
+      acceleration overstates momentum, so the credit is damped.
+    """
     if len(quarters) < MIN_QUARTERS:
         return None
     try:
-        rev = [rev_of(q) for q in quarters[:6]]
-        rev = [float(r) for r in rev]
+        rev = [float(rev_of(q)) for q in quarters[:6]]
     except (TypeError, ValueError):
         return None
     if rev[4] <= 0 or rev[5] <= 0:
         return None
     yoy_curr = rev[0] / rev[4] - 1
     yoy_prior = rev[1] / rev[5] - 1
-    return {"accel": yoy_curr - yoy_prior, "yoy_curr": yoy_curr, "yoy_prior": yoy_prior}
+
+    # must actually be growing now, not just less-bad than last year
+    if yoy_curr < MIN_CURRENT_GROWTH:
+        return None
+
+    raw_accel = yoy_curr - yoy_prior
+    # damp acceleration that comes off a negative prior-year base
+    if yoy_prior < 0:
+        accel = raw_accel * NEG_BASE_DAMPING
+    else:
+        accel = raw_accel
+
+    return {"accel": accel, "raw_accel": raw_accel,
+            "yoy_curr": yoy_curr, "yoy_prior": yoy_prior}
 
 def signal_B_eps_and_margin(quarters):
     if len(quarters) < 5:
@@ -226,8 +254,11 @@ def main():
 
         A = signal_A_acceleration(quarters)
         B = signal_B_eps_and_margin(quarters)
-        if A is None or B is None:
-            log.info("%s: signal compute failed", sym)
+        if A is None:
+            log.info("%s: not growing now or signal A failed", sym)
+            continue
+        if B is None:
+            log.info("%s: signal B failed", sym)
             continue
 
         records.append({
@@ -235,6 +266,7 @@ def main():
             "marketCap": (overview or {}).get("market_cap"),
             "sic": (overview or {}).get("sic_code"),
             "accel": A["accel"],
+            "raw_accel": A["raw_accel"],
             "yoy_curr": A["yoy_curr"],
             "yoy_prior": A["yoy_prior"],
             "eps_score": B["score"],
@@ -253,11 +285,12 @@ def main():
     df["compositeScore"] = WEIGHTS["A"] * df["A_pct"] + WEIGHTS["B"] * df["B_pct"]
     df = df.sort_values("compositeScore", ascending=False).reset_index(drop=True)
     df["rank"] = df.index + 1
-    df["runDate"] = datetime.utcnow().date().isoformat()
+    df["runDate"] = datetime.now(timezone.utc).date().isoformat()
 
     os.makedirs(OUT_DIR, exist_ok=True)
-    cols = ["rank", "ticker", "compositeScore", "accel", "yoy_curr", "yoy_prior",
-            "eps_growth", "margin", "margin_trend", "marketCap", "sic", "runDate"]
+    cols = ["rank", "ticker", "compositeScore", "accel", "raw_accel",
+            "yoy_curr", "yoy_prior", "eps_growth", "margin", "margin_trend",
+            "marketCap", "sic", "runDate"]
     df[cols].head(TOP_N).to_csv(f"{OUT_DIR}/acceleration_queue.csv", index=False)
     df[cols].to_json(f"{OUT_DIR}/acceleration_full.json", orient="records", indent=2)
     log.info("done. wrote %d survivors", len(df))
