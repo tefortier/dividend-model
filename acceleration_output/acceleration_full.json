@@ -1,23 +1,10 @@
 [
   {
     "rank":1,
-    "ticker":"KMB",
-    "compositeScore":1.0,
-    "accel":0.1989649472,
-    "yoy_curr":0.0268870252,
-    "yoy_prior":-0.1720779221,
-    "eps_growth":0.1764705882,
-    "margin":0.3684842662,
-    "margin_trend":0.0094156387,
-    "marketCap":35427994302.6100006104,
-    "sic":"2670",
-    "runDate":"2026-06-25"
-  },
-  {
-    "rank":2,
     "ticker":"PAYX",
-    "compositeScore":0.5,
+    "compositeScore":1.0,
     "accel":0.0159631524,
+    "raw_accel":0.0159631524,
     "yoy_curr":0.198740888,
     "yoy_prior":0.1827777356,
     "eps_growth":0.0909090909,
