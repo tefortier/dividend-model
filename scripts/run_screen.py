@@ -75,6 +75,7 @@ TICKERS = sorted(set(DIVIDEND_ACHIEVERS))
 YIELD_LOOKBACK = 520     # weeks (~10 years)
 RATE_LIMIT_DELAY = 0.12  # seconds between calls
 MAX_RATE_LIMIT_RETRIES = 3
+CHART_MAX_POINTS = 40    # target number of points on the historical chart
 
 
 def polygon_get(path: str, params: dict) -> Optional[dict]:
@@ -148,8 +149,12 @@ def get_ticker_details(ticker: str) -> dict:
     return {"company": ticker, "sector": "Unknown"}
 
 
-def calc_yield_series(closes: list[dict], dividends: list[dict]) -> list[float]:
-    """Calculate trailing 12-month yield at each weekly close."""
+def calc_yield_series(closes: list[dict], dividends: list[dict]) -> list[dict]:
+    """
+    Calculate trailing 12-month yield at each weekly close.
+    Returns a list of {"date": ISO string, "yield": float} pairs, oldest first.
+    Dates travel with the values now so the chart can never be mislabeled.
+    """
     if not closes or not dividends:
         return []
 
@@ -171,7 +176,7 @@ def calc_yield_series(closes: list[dict], dividends: list[dict]) -> list[float]:
         )
         close = bar["c"]
         if close and close > 0 and ttm_div > 0:
-            yield_series.append(ttm_div / close * 100)
+            yield_series.append({"date": bar_date.isoformat(), "yield": ttm_div / close * 100})
 
     return yield_series
 
@@ -232,6 +237,33 @@ def simplify_sector(raw: str) -> str:
     return "Other"
 
 
+def build_chart_series(yield_series: list[dict], max_points: int = CHART_MAX_POINTS) -> tuple[list[float], list[str]]:
+    """
+    Build the chart's (values, labels) from real dated data.
+    One point per calendar month (last observation in that month wins),
+    with the most recent actual data point always guaranteed to be last.
+    Labels are the real YYYY-MM of each plotted point, never fabricated.
+    """
+    if not yield_series:
+        return [], []
+
+    monthly: dict[str, dict] = {}
+    for pt in yield_series:
+        key = pt["date"][:7]  # YYYY-MM
+        monthly[key] = pt      # last observation in that month wins
+
+    chart_points = list(monthly.values())[-max_points:]
+
+    latest = yield_series[-1]
+    if not chart_points or chart_points[-1]["date"] != latest["date"]:
+        chart_points.append(latest)
+        chart_points = chart_points[-max_points:]
+
+    chart_yields = [round(p["yield"], 2) for p in chart_points]
+    chart_labels = [p["date"][:7] for p in chart_points]
+    return chart_yields, chart_labels
+
+
 def process_ticker(ticker: str) -> Optional[dict]:
     log.info(f"Processing {ticker}")
     try:
@@ -252,7 +284,8 @@ def process_ticker(ticker: str) -> Optional[dict]:
             log.warning(f"{ticker}: insufficient yield data ({len(yield_series)} points)")
             return None
 
-        yield_window = yield_series[-YIELD_LOOKBACK:]
+        yield_window_full = yield_series[-YIELD_LOOKBACK:]
+        yield_window = [pt["yield"] for pt in yield_window_full]
         current_yield = yield_window[-1]
         yield_high = max(yield_window)
         yield_low = min(yield_window)
@@ -266,12 +299,7 @@ def process_ticker(ticker: str) -> Optional[dict]:
         signal = calc_signal(yield_percentile)
         streak = estimate_streak(dividends)
 
-        # Downsample yield history for chart (~40 points)
-        step = max(1, len(yield_series) // 40)
-        chart_yields = [round(y, 2) for y in yield_series[::step][-40:]]
-        total = len(chart_yields)
-        start_year = date.today().year - 10
-        chart_labels = [str(start_year + int(i / total * 10)) for i in range(total)]
+        chart_yields, chart_labels = build_chart_series(yield_window_full)
 
         return {
             "ticker": ticker,
