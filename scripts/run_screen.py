@@ -75,7 +75,7 @@ TICKERS = sorted(set(DIVIDEND_ACHIEVERS))
 YIELD_LOOKBACK = 520     # weeks (~10 years)
 RATE_LIMIT_DELAY = 0.12  # seconds between calls
 MAX_RATE_LIMIT_RETRIES = 3
-CHART_MAX_POINTS = 40    # target number of points on the historical chart
+CHART_MAX_POINTS = 120    # target number of points on the historical chart
 
 
 def polygon_get(path: str, params: dict) -> Optional[dict]:
