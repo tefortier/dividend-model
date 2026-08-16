@@ -75,7 +75,7 @@ TICKERS = sorted(set(DIVIDEND_ACHIEVERS))
 YIELD_LOOKBACK = 520     # weeks (~10 years)
 RATE_LIMIT_DELAY = 0.12  # seconds between calls
 MAX_RATE_LIMIT_RETRIES = 3
-CHART_MAX_POINTS = 120    # target number of points on the historical chart
+CHART_MAX_POINTS = 120   # ~10 years of monthly points (was 40, which trimmed the chart to ~3 years)
 
 
 def polygon_get(path: str, params: dict) -> Optional[dict]:
@@ -264,7 +264,8 @@ def build_chart_series(yield_series: list[dict], max_points: int = CHART_MAX_POI
     return chart_yields, chart_labels
 
 
-def process_ticker(ticker: str) -> Optional[dict]:
+def process_ticker(ticker: str) -> tuple[Optional[dict], Optional[str]]:
+    """Returns (result, failure_reason). Exactly one of the two is None."""
     log.info(f"Processing {ticker}")
     try:
         details = get_ticker_details(ticker)
@@ -272,17 +273,20 @@ def process_ticker(ticker: str) -> Optional[dict]:
         dividends = get_dividends(ticker, years=11)
 
         if len(closes) < 52:
-            log.warning(f"{ticker}: insufficient price history ({len(closes)} bars)")
-            return None
+            reason = f"insufficient price history ({len(closes)} bars)"
+            log.warning(f"{ticker}: {reason}")
+            return None, reason
 
         if not dividends:
-            log.warning(f"{ticker}: no dividend history, skipping")
-            return None
+            reason = "no dividend history returned"
+            log.warning(f"{ticker}: {reason}")
+            return None, reason
 
         yield_series = calc_yield_series(closes, dividends)
         if len(yield_series) < 52:
-            log.warning(f"{ticker}: insufficient yield data ({len(yield_series)} points)")
-            return None
+            reason = f"insufficient yield data ({len(yield_series)} points)"
+            log.warning(f"{ticker}: {reason}")
+            return None, reason
 
         yield_window_full = yield_series[-YIELD_LOOKBACK:]
         yield_window = [pt["yield"] for pt in yield_window_full]
@@ -290,6 +294,8 @@ def process_ticker(ticker: str) -> Optional[dict]:
         yield_high = max(yield_window)
         yield_low = min(yield_window)
         yield_mean = np.mean(yield_window)
+
+        years_of_history = round(len(yield_window_full) / 52, 1)
 
         yield_percentile = int(
             np.searchsorted(sorted(yield_window), current_yield) / len(yield_window) * 100
@@ -312,32 +318,58 @@ def process_ticker(ticker: str) -> Optional[dict]:
             "percentile": yield_percentile,
             "signal": signal,
             "streak": streak,
+            "yearsOfHistory": years_of_history,
             "chartYields": chart_yields,
             "chartLabels": chart_labels,
             "lastUpdated": date.today().isoformat(),
-        }
+        }, None
 
     except Exception as e:
+        reason = f"exception: {e}"
         log.error(f"{ticker} failed: {e}")
-        return None
+        return None, reason
+
+
+FAILURE_RATE_ALERT_THRESHOLD = 0.05  # exit non-zero (triggers GitHub's failure email) if >5% of universe fails
+
+
+def run_pass(tickers: list[str]) -> tuple[list[dict], dict[str, str]]:
+    """Run process_ticker across a list of tickers. Returns (results, {ticker: reason} for failures)."""
+    results = []
+    reasons = {}
+    for ticker in tickers:
+        result, reason = process_ticker(ticker)
+        if result:
+            results.append(result)
+        else:
+            reasons[ticker] = reason
+        time.sleep(RATE_LIMIT_DELAY)
+    return results, reasons
 
 
 def main():
     log.info(f"Starting No Excuses Dividend Screen — {date.today()}")
-    results = []
-    failed = []
 
-    for ticker in TICKERS:
-        result = process_ticker(ticker)
-        if result:
-            results.append(result)
-        else:
-            failed.append(ticker)
-        time.sleep(RATE_LIMIT_DELAY)
+    results, failure_reasons = run_pass(TICKERS)
+
+    # Retry pass: transient rate-limit/timeout failures often clear on a second attempt.
+    if failure_reasons:
+        retry_tickers = list(failure_reasons.keys())
+        log.info(f"Retrying {len(retry_tickers)} failed tickers: {retry_tickers}")
+        time.sleep(5)
+        retry_results, retry_reasons = run_pass(retry_tickers)
+        results.extend(retry_results)
+        for t in retry_results:
+            failure_reasons.pop(t["ticker"], None)
+        failure_reasons.update(retry_reasons)  # keep latest reason for tickers that failed twice
 
     buy_count = sum(1 for r in results if r["signal"] == "BUY")
     watch_count = sum(1 for r in results if r["signal"] == "WATCH")
     avg_pct = round(np.mean([r["percentile"] for r in results]), 1) if results else 0
+    actual_lookback_years = round(np.median([r["yearsOfHistory"] for r in results]), 1) if results else 0
+
+    failed_detail = [{"ticker": t, "reason": r} for t, r in sorted(failure_reasons.items())]
+    failure_rate = len(failed_detail) / len(TICKERS) if TICKERS else 0
 
     output = {
         "meta": {
@@ -346,9 +378,12 @@ def main():
             "buyCount": buy_count,
             "watchCount": watch_count,
             "avgPercentile": avg_pct,
-            "lookbackYears": 10,
+            "lookbackYears": actual_lookback_years,   # actual median history available, not a fixed target
+            "dataSource": "Polygon.io free tier (~2yr history cap)",
             "buyThreshold": 80,
-            "failed": failed,
+            "failedCount": len(failed_detail),
+            "failureRate": round(failure_rate, 4),
+            "failed": failed_detail,
         },
         "stocks": sorted(results, key=lambda x: x["percentile"], reverse=True)
     }
@@ -358,8 +393,17 @@ def main():
     with open(out_path, "w") as f:
         json.dump(output, f, indent=2)
 
-    log.info(f"Done. {len(results)} stocks processed. {buy_count} BUY signals. {len(failed)} failed.")
+    log.info(f"Done. {len(results)} stocks processed. {buy_count} BUY signals. "
+             f"{len(failed_detail)} failed ({failure_rate:.1%}).")
     log.info(f"Output: {out_path}")
+
+    if failure_rate > FAILURE_RATE_ALERT_THRESHOLD:
+        log.error(
+            f"Failure rate {failure_rate:.1%} exceeds {FAILURE_RATE_ALERT_THRESHOLD:.0%} threshold "
+            f"after retry. Failing the job so GitHub sends a failure notification. "
+            f"Failed tickers: {[f['ticker'] for f in failed_detail]}"
+        )
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":
